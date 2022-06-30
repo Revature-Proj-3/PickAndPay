@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		739505D6286CFF3500FC7CA5 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 739505D5286CFF3500FC7CA5 /* ShoppingCart.storyboard */; };
+		841E9585286DFEBD0084B202 /* TabController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841E9584286DFEBD0084B202 /* TabController.storyboard */; };
 		84C14AD6286B94F6006BE029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD5286B94F6006BE029 /* AppDelegate.swift */; };
 		84C14AD8286B94F6006BE029 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD7286B94F6006BE029 /* SceneDelegate.swift */; };
 		84C14ADA286B94F6006BE029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD9286B94F6006BE029 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		739505D5286CFF3500FC7CA5 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
+		841E9584286DFEBD0084B202 /* TabController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabController.storyboard; sourceTree = "<group>"; };
 		84C14AD2286B94F6006BE029 /* PickAndPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickAndPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14AD5286B94F6006BE029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C14AD7286B94F6006BE029 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				84C14AE3286B94F7006BE029 /* LaunchScreen.storyboard */,
 				84C14AE6286B94F7006BE029 /* Info.plist */,
 				84C14ADE286B94F6006BE029 /* PickAndPay.xcdatamodeld */,
+				841E9584286DFEBD0084B202 /* TabController.storyboard */,
 			);
 			path = PickAndPay;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				739505D6286CFF3500FC7CA5 /* ShoppingCart.storyboard in Resources */,
 				84C14AE5286B94F7006BE029 /* LaunchScreen.storyboard in Resources */,
 				84C14AE2286B94F7006BE029 /* Assets.xcassets in Resources */,
+				841E9585286DFEBD0084B202 /* TabController.storyboard in Resources */,
 				84C14ADD286B94F6006BE029 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
