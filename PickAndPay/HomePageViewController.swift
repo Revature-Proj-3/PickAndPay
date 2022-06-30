@@ -23,17 +23,17 @@ class HomePageViewController: UIViewController {
 
 }
 
-extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath.row) as! HomePageCategoryCollectionViewCell
-    }
-    
-    
-}
+//extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return data.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//     //   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: data[indexPath.row]) as! HomePageCategoryCollectionViewCell
+//    }
+//
+//
+//}
 
 struct dummyData {
     var name : String
