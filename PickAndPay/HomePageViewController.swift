@@ -17,10 +17,7 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //pageControl.numberOfPages = data.count
-        
-        
     }
-
 }
 
 //extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
