@@ -20,9 +20,6 @@ class HomePageViewController: UIViewController {
         
         
     }
-    
-
-   
 
 }
 
