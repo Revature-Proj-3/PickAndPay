@@ -106,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				702E403F286DFD47004EEF56 /* Order.storyboard */,
-				84C14ADB286B94F6006BE029 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +154,7 @@
 				84C14AD5286B94F6006BE029 /* AppDelegate.swift */,
 				84C14AD7286B94F6006BE029 /* SceneDelegate.swift */,
 				84C14AD9286B94F6006BE029 /* ViewController.swift */,
+				84C14ADB286B94F6006BE029 /* Main.storyboard */,
 				84C14AE1286B94F7006BE029 /* Assets.xcassets */,
 				84C14AE3286B94F7006BE029 /* LaunchScreen.storyboard */,
 				84C14AE6286B94F7006BE029 /* Info.plist */,
