@@ -17,8 +17,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="OAn-UW-tPE" kind="relationship" relationship="viewControllers" id="Pmj-v4-2gK"/>
                         <segue destination="Qec-8v-Txg" kind="relationship" relationship="viewControllers" id="BrM-hm-Scu"/>
+                        <segue destination="Qtk-9q-iP0" kind="relationship" relationship="viewControllers" id="lQu-Pu-9Wo"/>
+                        <segue destination="OAn-UW-tPE" kind="relationship" relationship="viewControllers" id="Pmj-v4-2gK"/>
+                        <segue destination="gMZ-2H-A4K" kind="relationship" relationship="viewControllers" id="T4K-8f-SGo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icX-bQ-2Ag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -34,6 +36,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ite-oy-1MJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="819" y="84"/>
+        </scene>
+        <!--Order-->
+        <scene sceneID="g6Y-he-1mY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Order" id="gMZ-2H-A4K" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="kNM-9S-jRy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hE-Ow-DMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="854" y="139"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="RzD-7P-gH5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="Qtk-9q-iP0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="8MB-LM-Crp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fox-Q4-fVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820" y="209"/>
         </scene>
         <!--HomePage-->
         <scene sceneID="RPl-8f-9ri">
