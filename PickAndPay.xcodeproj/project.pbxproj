@@ -10,6 +10,10 @@
 		739505D6286CFF3500FC7CA5 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 739505D5286CFF3500FC7CA5 /* ShoppingCart.storyboard */; };
 		73DECABE286F514300D8259A /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DECABD286F514300D8259A /* ShoppingCartViewController.swift */; };
 		73DECAC0286F521600D8259A /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */; };
+		841E9585286DFEBD0084B202 /* TabController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841E9584286DFEBD0084B202 /* TabController.storyboard */; };
+		841E9587286E016B0084B202 /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841E9586286E016B0084B202 /* HomePage.storyboard */; };
+		841E9589286E0C010084B202 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9588286E0C010084B202 /* HomePageViewController.swift */; };
+		841E958B286E26720084B202 /* HomePageCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E958A286E26720084B202 /* HomePageCategoryCollectionViewCell.swift */; };
 		84C14AD6286B94F6006BE029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD5286B94F6006BE029 /* AppDelegate.swift */; };
 		84C14AD8286B94F6006BE029 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD7286B94F6006BE029 /* SceneDelegate.swift */; };
 		84C14ADA286B94F6006BE029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD9286B94F6006BE029 /* ViewController.swift */; };
@@ -43,6 +47,10 @@
 		739505D5286CFF3500FC7CA5 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
 		73DECABD286F514300D8259A /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
+		841E9584286DFEBD0084B202 /* TabController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabController.storyboard; sourceTree = "<group>"; };
+		841E9586286E016B0084B202 /* HomePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomePage.storyboard; sourceTree = "<group>"; };
+		841E9588286E0C010084B202 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		841E958A286E26720084B202 /* HomePageCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		84C14AD2286B94F6006BE029 /* PickAndPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickAndPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14AD5286B94F6006BE029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C14AD7286B94F6006BE029 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +126,10 @@
 				84C14ADE286B94F6006BE029 /* PickAndPay.xcdatamodeld */,
 				73DECABD286F514300D8259A /* ShoppingCartViewController.swift */,
 				73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */,
+				841E9584286DFEBD0084B202 /* TabController.storyboard */,
+				841E9586286E016B0084B202 /* HomePage.storyboard */,
+				841E958A286E26720084B202 /* HomePageCategoryCollectionViewCell.swift */,
+				841E9588286E0C010084B202 /* HomePageViewController.swift */,
 			);
 			path = PickAndPay;
 			sourceTree = "<group>";
@@ -245,7 +257,9 @@
 			files = (
 				739505D6286CFF3500FC7CA5 /* ShoppingCart.storyboard in Resources */,
 				84C14AE5286B94F7006BE029 /* LaunchScreen.storyboard in Resources */,
+				841E9587286E016B0084B202 /* HomePage.storyboard in Resources */,
 				84C14AE2286B94F7006BE029 /* Assets.xcassets in Resources */,
+				841E9585286DFEBD0084B202 /* TabController.storyboard in Resources */,
 				84C14ADD286B94F6006BE029 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,8 +287,10 @@
 			files = (
 				84C14ADA286B94F6006BE029 /* ViewController.swift in Sources */,
 				84C14AD6286B94F6006BE029 /* AppDelegate.swift in Sources */,
+				841E958B286E26720084B202 /* HomePageCategoryCollectionViewCell.swift in Sources */,
 				84C14AD8286B94F6006BE029 /* SceneDelegate.swift in Sources */,
 				73DECAC0286F521600D8259A /* ShoppingCartTableViewCell.swift in Sources */,
+				841E9589286E0C010084B202 /* HomePageViewController.swift in Sources */,
 				84C14AE0286B94F6006BE029 /* PickAndPay.xcdatamodeld in Sources */,
 				73DECABE286F514300D8259A /* ShoppingCartViewController.swift in Sources */,
 			);
@@ -458,7 +474,7 @@
 				INFOPLIST_FILE = PickAndPay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = ShoppingCart;
+				INFOPLIST_KEY_UIMainStoryboardFile = TabController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -486,7 +502,7 @@
 				INFOPLIST_FILE = PickAndPay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = ShoppingCart;
+				INFOPLIST_KEY_UIMainStoryboardFile = TabController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
