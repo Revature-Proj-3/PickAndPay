@@ -18,6 +18,10 @@
 		841E9590286F388C0084B202 /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E958F286F388C0084B202 /* HomePageModel.swift */; };
 		841E9592286F38980084B202 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9591286F38980084B202 /* HomePageViewModel.swift */; };
 		841E9594286F3A750084B202 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9593286F3A750084B202 /* Constants.swift */; };
+		842DF1CE2875EF0C0096FAE2 /* SwiftUILoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1CD2875EF0C0096FAE2 /* SwiftUILoginView.swift */; };
+		842DF1D02875EF4D0096FAE2 /* SwiftUICreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1CF2875EF4D0096FAE2 /* SwiftUICreateAccountView.swift */; };
+		842DF1D42875F01A0096FAE2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1D32875F01A0096FAE2 /* LoginViewController.swift */; };
+		842DF1DD2875F0D50096FAE2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842DF1DC2875F0D50096FAE2 /* Login.storyboard */; };
 		84C14AD6286B94F6006BE029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD5286B94F6006BE029 /* AppDelegate.swift */; };
 		84C14AD8286B94F6006BE029 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD7286B94F6006BE029 /* SceneDelegate.swift */; };
 		84C14ADA286B94F6006BE029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD9286B94F6006BE029 /* ViewController.swift */; };
@@ -59,6 +63,10 @@
 		841E958F286F388C0084B202 /* HomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
 		841E9591286F38980084B202 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		841E9593286F3A750084B202 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		842DF1CD2875EF0C0096FAE2 /* SwiftUILoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoginView.swift; sourceTree = "<group>"; };
+		842DF1CF2875EF4D0096FAE2 /* SwiftUICreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICreateAccountView.swift; sourceTree = "<group>"; };
+		842DF1D32875F01A0096FAE2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		842DF1DC2875F0D50096FAE2 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		84C14AD2286B94F6006BE029 /* PickAndPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickAndPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14AD5286B94F6006BE029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C14AD7286B94F6006BE029 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +121,17 @@
 			path = HomePage;
 			sourceTree = "<group>";
 		};
+		842DF1DE2875F1B20096FAE2 /* LoginPage */ = {
+			isa = PBXGroup;
+			children = (
+				842DF1DC2875F0D50096FAE2 /* Login.storyboard */,
+				842DF1D32875F01A0096FAE2 /* LoginViewController.swift */,
+				842DF1CF2875EF4D0096FAE2 /* SwiftUICreateAccountView.swift */,
+				842DF1CD2875EF0C0096FAE2 /* SwiftUILoginView.swift */,
+			);
+			path = LoginPage;
+			sourceTree = "<group>";
+		};
 		84C14AC9286B94F6006BE029 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +168,7 @@
 				73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */,
 				841E9584286DFEBD0084B202 /* TabController.storyboard */,
 				841E9593286F3A750084B202 /* Constants.swift */,
+				842DF1DE2875F1B20096FAE2 /* LoginPage */,
 				841E958E286F386F0084B202 /* HomePage */,
 			);
 			path = PickAndPay;
@@ -277,6 +297,7 @@
 			files = (
 				739505D6286CFF3500FC7CA5 /* ShoppingCart.storyboard in Resources */,
 				84C14AE5286B94F7006BE029 /* LaunchScreen.storyboard in Resources */,
+				842DF1DD2875F0D50096FAE2 /* Login.storyboard in Resources */,
 				841E9587286E016B0084B202 /* HomePage.storyboard in Resources */,
 				84C14AE2286B94F7006BE029 /* Assets.xcassets in Resources */,
 				841E9585286DFEBD0084B202 /* TabController.storyboard in Resources */,
@@ -308,12 +329,15 @@
 				84C14ADA286B94F6006BE029 /* ViewController.swift in Sources */,
 				84C14AD6286B94F6006BE029 /* AppDelegate.swift in Sources */,
 				841E9592286F38980084B202 /* HomePageViewModel.swift in Sources */,
+				842DF1D42875F01A0096FAE2 /* LoginViewController.swift in Sources */,
 				841E958B286E26720084B202 /* HomePageCategoryCollectionViewCell.swift in Sources */,
+				842DF1D02875EF4D0096FAE2 /* SwiftUICreateAccountView.swift in Sources */,
 				84C14AD8286B94F6006BE029 /* SceneDelegate.swift in Sources */,
 				841E9594286F3A750084B202 /* Constants.swift in Sources */,
 				73DECAC0286F521600D8259A /* ShoppingCartTableViewCell.swift in Sources */,
 				841E9589286E0C010084B202 /* HomePageViewController.swift in Sources */,
 				841E9590286F388C0084B202 /* HomePageModel.swift in Sources */,
+				842DF1CE2875EF0C0096FAE2 /* SwiftUILoginView.swift in Sources */,
 				84C14AE0286B94F6006BE029 /* PickAndPay.xcdatamodeld in Sources */,
 				841E958D286F28C20084B202 /* FeaturedCollectionViewCell.swift in Sources */,
 				73DECABE286F514300D8259A /* ShoppingCartViewController.swift in Sources */,
