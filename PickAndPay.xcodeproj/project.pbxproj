@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		702E403C286DA479004EEF56 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E403B286DA479004EEF56 /* OrderViewController.swift */; };
+		702E403E286DA531004EEF56 /* OrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E403D286DA531004EEF56 /* OrderCollectionViewCell.swift */; };
+		702E4040286DFD47004EEF56 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702E403F286DFD47004EEF56 /* Order.storyboard */; };
+		702E4046286F7092004EEF56 /* SelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E4045286F7091004EEF56 /* SelectedViewController.swift */; };
+		702E4048286F7107004EEF56 /* SelectedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E4047286F7107004EEF56 /* SelectedCollectionViewCell.swift */; };
+		702E404A286F8157004EEF56 /* PricedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E4049286F8157004EEF56 /* PricedViewController.swift */; };
+		702E404C286F8198004EEF56 /* PricedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E404B286F8198004EEF56 /* PricedCollectionViewCell.swift */; };
 		84C14AD6286B94F6006BE029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD5286B94F6006BE029 /* AppDelegate.swift */; };
 		84C14AD8286B94F6006BE029 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD7286B94F6006BE029 /* SceneDelegate.swift */; };
 		84C14ADA286B94F6006BE029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD9286B94F6006BE029 /* ViewController.swift */; };
@@ -37,6 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		702E403B286DA479004EEF56 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		702E403D286DA531004EEF56 /* OrderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCollectionViewCell.swift; sourceTree = "<group>"; };
+		702E403F286DFD47004EEF56 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
+		702E4045286F7091004EEF56 /* SelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedViewController.swift; sourceTree = "<group>"; };
+		702E4047286F7107004EEF56 /* SelectedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewCell.swift; sourceTree = "<group>"; };
+		702E4049286F8157004EEF56 /* PricedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricedViewController.swift; sourceTree = "<group>"; };
+		702E404B286F8198004EEF56 /* PricedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricedCollectionViewCell.swift; sourceTree = "<group>"; };
 		84C14AD2286B94F6006BE029 /* PickAndPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickAndPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14AD5286B94F6006BE029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C14AD7286B94F6006BE029 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +92,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		702E4041286F5A12004EEF56 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				702E4049286F8157004EEF56 /* PricedViewController.swift */,
+				702E4045286F7091004EEF56 /* SelectedViewController.swift */,
+				702E403B286DA479004EEF56 /* OrderViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		702E4042286F5A4A004EEF56 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				702E403F286DFD47004EEF56 /* Order.storyboard */,
+				84C14ADB286B94F6006BE029 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		702E4043286F5A72004EEF56 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		702E4044286F5A7B004EEF56 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		84C14AC9286B94F6006BE029 = {
 			isa = PBXGroup;
 			children = (
@@ -101,14 +148,20 @@
 		84C14AD4286B94F6006BE029 /* PickAndPay */ = {
 			isa = PBXGroup;
 			children = (
+				702E4044286F5A7B004EEF56 /* ViewModel */,
+				702E4043286F5A72004EEF56 /* Model */,
+				702E4042286F5A4A004EEF56 /* View */,
+				702E4041286F5A12004EEF56 /* Controllers */,
 				84C14AD5286B94F6006BE029 /* AppDelegate.swift */,
 				84C14AD7286B94F6006BE029 /* SceneDelegate.swift */,
 				84C14AD9286B94F6006BE029 /* ViewController.swift */,
-				84C14ADB286B94F6006BE029 /* Main.storyboard */,
 				84C14AE1286B94F7006BE029 /* Assets.xcassets */,
 				84C14AE3286B94F7006BE029 /* LaunchScreen.storyboard */,
 				84C14AE6286B94F7006BE029 /* Info.plist */,
 				84C14ADE286B94F6006BE029 /* PickAndPay.xcdatamodeld */,
+				702E403D286DA531004EEF56 /* OrderCollectionViewCell.swift */,
+				702E4047286F7107004EEF56 /* SelectedCollectionViewCell.swift */,
+				702E404B286F8198004EEF56 /* PricedCollectionViewCell.swift */,
 			);
 			path = PickAndPay;
 			sourceTree = "<group>";
@@ -237,6 +290,7 @@
 				84C14AE5286B94F7006BE029 /* LaunchScreen.storyboard in Resources */,
 				84C14AE2286B94F7006BE029 /* Assets.xcassets in Resources */,
 				84C14ADD286B94F6006BE029 /* Main.storyboard in Resources */,
+				702E4040286DFD47004EEF56 /* Order.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +316,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C14ADA286B94F6006BE029 /* ViewController.swift in Sources */,
+				702E404C286F8198004EEF56 /* PricedCollectionViewCell.swift in Sources */,
+				702E403E286DA531004EEF56 /* OrderCollectionViewCell.swift in Sources */,
+				702E403C286DA479004EEF56 /* OrderViewController.swift in Sources */,
 				84C14AD6286B94F6006BE029 /* AppDelegate.swift in Sources */,
 				84C14AD8286B94F6006BE029 /* SceneDelegate.swift in Sources */,
+				702E4046286F7092004EEF56 /* SelectedViewController.swift in Sources */,
+				702E4048286F7107004EEF56 /* SelectedCollectionViewCell.swift in Sources */,
 				84C14AE0286B94F6006BE029 /* PickAndPay.xcdatamodeld in Sources */,
+				702E404A286F8157004EEF56 /* PricedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +506,7 @@
 				INFOPLIST_FILE = PickAndPay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Order;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -474,7 +534,7 @@
 				INFOPLIST_FILE = PickAndPay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Order;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
