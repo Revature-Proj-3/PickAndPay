@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  PickAndPay
 //
-//  Created by admin on 7/1/22.
+//  Created by Zachary Saffron on 7/1/22.
 //
 
 import UIKit
@@ -77,6 +77,19 @@ class LoginViewController: UIViewController {
         list.layer.cornerRadius = 4.0
     }
 
+    @IBAction func signInButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let loginNextScreen = storyboard.instantiateViewController(withIdentifier: "Login")
+        //show the tab controller as an instantiated vc
+        loginNextScreen.modalPresentationStyle = .fullScreen
+        self.present(loginNextScreen, animated: true, completion: nil)
+    }
     
-    
+    @IBAction func createAccountButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let createNextScreen = storyboard.instantiateViewController(withIdentifier: "CreateAccount")
+        //show the tab controller as an instantiated vc
+        createNextScreen.modalPresentationStyle = .fullScreen
+        self.present(createNextScreen, animated: true, completion: nil)
+    }
 }
