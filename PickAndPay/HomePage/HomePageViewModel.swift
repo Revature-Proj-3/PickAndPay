@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import Combine
 
-
 class HomePageViewModel{
     static var HomePageViewModelHelper = HomePageViewModel()
     let constants = Constants()
