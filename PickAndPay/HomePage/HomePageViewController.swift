@@ -12,7 +12,8 @@ class HomePageViewController: UIViewController {
 
     let viewModel = HomePageViewModel.HomePageViewModelHelper
 
-
+    let userDefault = UserDefaults.standard
+    
     @IBOutlet weak var catCollectionView: UICollectionView!
     @IBOutlet weak var featuredCollectionView: UICollectionView!
     
@@ -24,6 +25,7 @@ class HomePageViewController: UIViewController {
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.setGuestUser()
         observer = viewModel.getProducts()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] products in
@@ -32,6 +34,7 @@ class HomePageViewController: UIViewController {
             self?.featuredCollectionView.reloadData()
             self?.catCollectionView.reloadData()
         })
+        print(userDefault.string(forKey: "currentLoggedIn")!)
     }
     
     @IBAction func signIn(_ sender: Any) {
