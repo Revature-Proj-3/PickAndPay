@@ -2,7 +2,7 @@
 //  SwiftUILoginView.swift
 //  PickAndPay
 //
-//  Created by admin on 6/29/22.
+//  Created by Zachary Saffron on 6/29/22.
 //
 
 import SwiftUI
@@ -77,5 +77,6 @@ struct SwiftUILoginView: View {
 struct SwiftUILoginView_Previews: PreviewProvider {
     static var previews: some View {
         SwiftUILoginView()
+            .accessibilityIdentifier("Login")
     }
 }

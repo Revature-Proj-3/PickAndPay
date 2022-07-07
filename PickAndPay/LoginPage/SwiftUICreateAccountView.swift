@@ -2,7 +2,7 @@
 //  SwiftUICreateAccountView.swift
 //  PickAndPay
 //
-//  Created by admin on 6/29/22.
+//  Created by Zachary Saffron on 6/29/22.
 //
 
 import SwiftUI
@@ -110,5 +110,6 @@ struct SwiftUICreateAccountView: View {
 struct SwiftUICreateAccountView_Previews: PreviewProvider {
     static var previews: some View {
         SwiftUICreateAccountView()
+            .accessibilityIdentifier("CreateAccount")
     }
 }
