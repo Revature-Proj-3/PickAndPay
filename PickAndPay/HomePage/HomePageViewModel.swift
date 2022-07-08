@@ -34,19 +34,20 @@ class HomePageViewModel{
     
     func setGuestUser(){
         if(userDefault.string(forKey: "currentLoggedIn") != "guest"){
-        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
-        user.name = "guest"
-        user.email = "guest@guest.com"
-        user.phoneNumber = "N/A"
-        user.password = "N/A"
-        user.balance = 0.00
-        do{
-            try context?.save()
-        } catch{
-            print("Error saving user")
+            let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
+            user.name = "guest"
+            user.email = "guest@guest.com"
+            user.phoneNumber = "N/A"
+            user.password = "N/A"
+            user.balance = 0.00
+            do{
+                try context?.save()
+            } catch{
+                print("Error saving user")
+            }
+        
         }
         userDefault.set("guest", forKey: "currentLoggedIn")
-        }
     }
     
     func getFeaturedProducts(_ arr : [Product]) -> [Product] {
@@ -75,8 +76,6 @@ class HomePageViewModel{
                 Just([])
             })
                 .eraseToAnyPublisher()
-        
-        
         
         return publisher
 

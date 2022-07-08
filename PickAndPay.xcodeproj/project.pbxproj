@@ -26,6 +26,7 @@
 		841E9590286F388C0084B202 /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E958F286F388C0084B202 /* HomePageModel.swift */; };
 		841E9592286F38980084B202 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9591286F38980084B202 /* HomePageViewModel.swift */; };
 		841E9594286F3A750084B202 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9593286F3A750084B202 /* Constants.swift */; };
+		841E95CC287883290084B202 /* SearchBarDelegateFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E95CB287883290084B202 /* SearchBarDelegateFile.swift */; };
 		842DF1CE2875EF0C0096FAE2 /* SwiftUILoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1CD2875EF0C0096FAE2 /* SwiftUILoginView.swift */; };
 		842DF1D02875EF4D0096FAE2 /* SwiftUICreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1CF2875EF4D0096FAE2 /* SwiftUICreateAccountView.swift */; };
 		842DF1D42875F01A0096FAE2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1D32875F01A0096FAE2 /* LoginViewController.swift */; };
@@ -82,6 +83,7 @@
 		841E958F286F388C0084B202 /* HomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
 		841E9591286F38980084B202 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		841E9593286F3A750084B202 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		841E95CB287883290084B202 /* SearchBarDelegateFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarDelegateFile.swift; sourceTree = "<group>"; };
 		842DF1CD2875EF0C0096FAE2 /* SwiftUILoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoginView.swift; sourceTree = "<group>"; };
 		842DF1CF2875EF4D0096FAE2 /* SwiftUICreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICreateAccountView.swift; sourceTree = "<group>"; };
 		842DF1D32875F01A0096FAE2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				841E9586286E016B0084B202 /* HomePage.storyboard */,
 				841E958F286F388C0084B202 /* HomePageModel.swift */,
 				841E9591286F38980084B202 /* HomePageViewModel.swift */,
+				841E95CB287883290084B202 /* SearchBarDelegateFile.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				841E9589286E0C010084B202 /* HomePageViewController.swift in Sources */,
 				842DF1E428775D440096FAE2 /* CreateAccountSwiftUIViewController.swift in Sources */,
 				70DEE1C72875F7580045FC1E /* SelectedCollectionViewCell.swift in Sources */,
+				841E95CC287883290084B202 /* SearchBarDelegateFile.swift in Sources */,
 				841E9590286F388C0084B202 /* HomePageModel.swift in Sources */,
 				70DEE1BB2875F5940045FC1E /* OrderCollectionViewCell.swift in Sources */,
 				842DF1CE2875EF0C0096FAE2 /* SwiftUILoginView.swift in Sources */,
