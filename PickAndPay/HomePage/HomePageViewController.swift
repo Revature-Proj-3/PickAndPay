@@ -47,7 +47,6 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
             self?.catCollectionView.reloadData()
             self?.loadingIndicator.stopAnimating()
             self?.loadingIndicator2.stopAnimating()
-            
         })
         
         print(userDefault.string(forKey: "currentLoggedIn")!)
