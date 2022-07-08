@@ -8,22 +8,36 @@
 import UIKit
 import Combine
 
-class HomePageViewController: UIViewController {
+class HomePageViewController: UIViewController, UISearchBarDelegate {
 
     let viewModel = HomePageViewModel.HomePageViewModelHelper
 
-
+    let userDefault = UserDefaults.standard
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var catCollectionView: UICollectionView!
     @IBOutlet weak var featuredCollectionView: UICollectionView!
+    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signInLabel: UILabel!
     
+    @IBOutlet weak var loadingIndicator2: UIActivityIndicatorView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var welcomeText: UILabel!
     var observer : AnyCancellable?
     private var products : [Product] = []
     private var categories : [Product] = []
     private var featuredProducts : [Product] = []
+    let searchBarDelegate = SearchBarDelegateFile()
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = searchBarDelegate
+        viewModel.setGuestUser()
+        loadingIndicator.startAnimating()
+        loadingIndicator2.startAnimating()
         observer = viewModel.getProducts()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] products in
@@ -31,13 +45,34 @@ class HomePageViewController: UIViewController {
             self?.categories = (self?.viewModel.filterCategories(products))!
             self?.featuredCollectionView.reloadData()
             self?.catCollectionView.reloadData()
+            self?.loadingIndicator.stopAnimating()
+            self?.loadingIndicator2.stopAnimating()
         })
+        
+        print(userDefault.string(forKey: "currentLoggedIn")!)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        let currentUser = userDefault.string(forKey: "currentLoggedIn")
+        if currentUser != "guest" {
+            welcomeText.isHidden = false
+            signInLabel.text = currentUser
+            signInButton.isHidden = true
+            createAccountButton.isHidden = true
+        }
     }
     
     @IBAction func signIn(_ sender: Any) {
-        
+        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+        let page = storyBoard.instantiateViewController(withIdentifier: "Login")
+        show(page, sender: Any?.self)
     }
     
+    @IBAction func createAccount(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+        let page = storyBoard.instantiateViewController(withIdentifier: "CreateAccount")
+        show(page, sender: Any?.self)
+    }
 }
 
 // MARK: - UICOllectionViewDelegate, UICOllectionViewDataSource

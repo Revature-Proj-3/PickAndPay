@@ -8,9 +8,13 @@
 import Foundation
 import UIKit
 import Combine
+import CoreData
 
 class HomePageViewModel{
     static var HomePageViewModelHelper = HomePageViewModel()
+    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    let userDefault = UserDefaults.standard
+    //let dbHelper = DBHelper.dbHelper
     let constants = Constants()
     var productList = [Product]()
     var catList = [Product]()
@@ -26,6 +30,24 @@ class HomePageViewModel{
             }
         }
         return catList
+    }
+    
+    func setGuestUser(){
+        if(userDefault.string(forKey: "currentLoggedIn") != "guest"){
+            let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
+            user.name = "guest"
+            user.email = "guest@guest.com"
+            user.phoneNumber = "N/A"
+            user.password = "N/A"
+            user.balance = 0.00
+            do{
+                try context?.save()
+            } catch{
+                print("Error saving user")
+            }
+        
+        }
+        userDefault.set("guest", forKey: "currentLoggedIn")
     }
     
     func getFeaturedProducts(_ arr : [Product]) -> [Product] {
@@ -54,8 +76,6 @@ class HomePageViewModel{
                 Just([])
             })
                 .eraseToAnyPublisher()
-        
-        
         
         return publisher
 

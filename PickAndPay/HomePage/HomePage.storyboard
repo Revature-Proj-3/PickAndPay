@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dlR-kj-25b">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="dlR-kj-25b">
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JO5-MO-qHA"/>
@@ -47,6 +47,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="eMV-u8-DEv">
+                                    <rect key="frame" x="0.0" y="0.0" width="384" height="115"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="5kP-0a-6IM" customClass="HomePageCategoryCollectionViewCell" customModule="PickAndPay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-6.5" width="128" height="128"/>
@@ -99,6 +103,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="UDM-g6-2df">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="229"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell2" id="Z9F-rl-eNV" customClass="FeaturedCollectionViewCell" customModule="PickAndPay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="30" width="373" height="169"/>
@@ -149,8 +157,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign in for the best experience" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGc-mM-QKP">
-                                        <rect key="frame" x="8" y="37" width="241" height="79"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign in for the best experience" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGc-mM-QKP">
+                                        <rect key="frame" x="8" y="37" width="358" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -161,8 +169,20 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Sign in">
+                                            <color key="baseForegroundColor" name="ViewBackground"/>
                                             <color key="baseBackgroundColor" name="FilledButton"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signIn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FWe-BW-6bh"/>
                                         </connections>
@@ -174,7 +194,18 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Create an account">
                                             <color key="baseForegroundColor" name="Button"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="createAccount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="skq-V6-rpm"/>
+                                            <action selector="signIn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="H5h-XV-VA4"/>
+                                        </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to the Pick and Pay Store. Browse items, add them to your wishlist, or your cart to checkout. Happy shopping!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc2-yg-Wiv">
+                                        <rect key="frame" x="43" y="83" width="289" height="127"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="ViewBackground"/>
                                 <constraints>
@@ -208,7 +239,14 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="catCollectionView" destination="Xfy-6B-W9T" id="cqu-wx-6Ln"/>
+                        <outlet property="createAccountButton" destination="0UL-AC-9Q9" id="Rpz-5M-K6d"/>
                         <outlet property="featuredCollectionView" destination="dRY-Xi-P50" id="MUB-Xe-nWn"/>
+                        <outlet property="loadingIndicator" destination="eMV-u8-DEv" id="CtG-Zv-fBV"/>
+                        <outlet property="loadingIndicator2" destination="UDM-g6-2df" id="KdG-aD-udj"/>
+                        <outlet property="searchBar" destination="dlR-kj-25b" id="uid-vn-jOJ"/>
+                        <outlet property="signInButton" destination="sjn-oM-LP0" id="yqe-1x-alc"/>
+                        <outlet property="signInLabel" destination="NGc-mM-QKP" id="Fns-Eo-vYV"/>
+                        <outlet property="welcomeText" destination="wc2-yg-Wiv" id="WVn-TH-bU6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
