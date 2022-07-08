@@ -117,7 +117,7 @@ class DBHelper {
     }
     
     func getAllShoppingCartItem() -> [ShoppingCartItem] {
-        return user.first?.shoppingCartItem?.allObjects as! [ShoppingCartItem]
+        return user.first?.shoppingCartItem?.allObjects as? [ShoppingCartItem] ?? []
     }
     
     func deleteShoppingCartItem(_ title : String){

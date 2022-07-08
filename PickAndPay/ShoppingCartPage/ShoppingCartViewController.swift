@@ -23,12 +23,12 @@ class ShoppingCartViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if(cartItems.isEmpty){
             shoppingCartTableView.isHidden = true
-            shoppingCartImage.isHidden = true
-            cartEmptyText.isHidden = true
-        } else{
-            shoppingCartTableView.isHidden = false
             shoppingCartImage.isHidden = false
             cartEmptyText.isHidden = false
+        } else{
+            shoppingCartTableView.isHidden = false
+            shoppingCartImage.isHidden = true
+            cartEmptyText.isHidden = true
         }
     }
     

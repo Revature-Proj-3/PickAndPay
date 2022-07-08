@@ -145,6 +145,15 @@
 			path = ProductPage;
 			sourceTree = "<group>";
 		};
+		73B364022878955400C84882 /* ShoppingCartPage */ = {
+			isa = PBXGroup;
+			children = (
+				73DECABD286F514300D8259A /* ShoppingCartViewController.swift */,
+				73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */,
+			);
+			path = ShoppingCartPage;
+			sourceTree = "<group>";
+		};
 		841E958E286F386F0084B202 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +205,7 @@
 		84C14AD4286B94F6006BE029 /* PickAndPay */ = {
 			isa = PBXGroup;
 			children = (
+				73B364022878955400C84882 /* ShoppingCartPage */,
 				70DEE1B92875F5630045FC1E /* ProductPage */,
 				84C14AD5286B94F6006BE029 /* AppDelegate.swift */,
 				84C14AD7286B94F6006BE029 /* SceneDelegate.swift */,
@@ -208,8 +218,6 @@
 				84C14AE3286B94F7006BE029 /* LaunchScreen.storyboard */,
 				84C14AE6286B94F7006BE029 /* Info.plist */,
 				84C14ADE286B94F6006BE029 /* PickAndPay.xcdatamodeld */,
-				73DECABD286F514300D8259A /* ShoppingCartViewController.swift */,
-				73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */,
 				841E9584286DFEBD0084B202 /* TabController.storyboard */,
 				841E9593286F3A750084B202 /* Constants.swift */,
 				842DF1DE2875F1B20096FAE2 /* LoginPage */,
