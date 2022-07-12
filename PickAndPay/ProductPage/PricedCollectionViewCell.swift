@@ -10,6 +10,7 @@ import UIKit
 class PricedCollectionViewCell: UICollectionViewCell {
     
     
+    @IBOutlet weak var productLabel: UILabel!
     
     
     

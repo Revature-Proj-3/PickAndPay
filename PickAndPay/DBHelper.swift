@@ -141,6 +141,7 @@ class DBHelper {
     func addWishListItem(_ title : String,_ productDescription : String,_ image : String,_ category : String,_ price : Double,_ rate : Int32,_ count : Int32){
         setUser()
         do{
+            print(user.first)
             let wishListItem = WishListItem(context: context!)
             wishListItem.title = title
             wishListItem.productDescription = productDescription
@@ -151,6 +152,8 @@ class DBHelper {
             wishListItem.count = count
             user.first?.addToWishListItem(wishListItem)
             try context?.save()
+            print("data from wishlistItem", wishListItem)
+           
         } catch{
             print("Error saving WishList Item")
         }
@@ -158,7 +161,7 @@ class DBHelper {
   
     func getWishListItem() -> [WishListItem]{
         setUser()
-        return user.first?.wishListItem?.allObjects as! [WishListItem]
+        return user.first?.wishListItem?.allObjects as? [WishListItem] ?? []
     }
     
     func deleteWishListItem(_ title : String){
