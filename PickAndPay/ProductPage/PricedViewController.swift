@@ -76,7 +76,6 @@ class PricedViewController: UIViewController {
             // Present dialog message to user
             self.present(dialogMessage, animated: true, completion: nil)
         
-        
         dbHelper.addWishListItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), Int32(productCount))
     }
     
