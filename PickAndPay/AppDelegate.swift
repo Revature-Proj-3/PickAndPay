@@ -15,6 +15,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let userDefault = UserDefaults.standard
+        let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+                do{
+                    let request = User.fetchRequest() as NSFetchRequest<User>
+                    let pred = NSPredicate(format: "email == %@", "guest@guest.com" )
+                    request.predicate = pred
+                    let userArr = try context?.fetch(request)
+                    let user = userArr?.first
+                    if user?.email != nil {
+                        userDefault.set("guest", forKey: "currentLoggedIn")
+                    }else{
+                        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
+                        user.name = "guest"
+                        user.email = "guest@guest.com"
+                        user.phoneNumber = "N/A"
+                        user.password = "N/A"
+                        user.balance = 0.00
+                        do{
+                            try context?.save()
+                        } catch{
+                            print("Error saving user")
+                        }
+                    }
+                }catch{
+                    print("error fetching user")
+                }
+                userDefault.set("guest", forKey: "currentLoggedIn")
         return true
     }
 

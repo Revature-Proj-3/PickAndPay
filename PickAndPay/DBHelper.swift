@@ -35,6 +35,7 @@ class DBHelper {
     }
     
     func getUserData(_ email : String) -> User{
+        setUser()
         var user = User()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         fetchRequest.predicate = NSPredicate(format: "email == %@", email)
@@ -67,6 +68,7 @@ class DBHelper {
     
     
     func addHistoryItem(_ title : String,_ productDescription : String,_ image : String,_ category : String,_ price : Double,_ rate : Int32,_ count : Int32){
+        setUser()
         do{
             let historyItem = HistoryItem(context: context!)
             historyItem.title = title
@@ -84,6 +86,7 @@ class DBHelper {
     }
     
     func getAllHistoryItem() -> [HistoryItem]{
+        setUser()
         return user.first?.historyItem?.allObjects as! [HistoryItem]
     }
    
@@ -100,6 +103,7 @@ class DBHelper {
     }
     
     func addShoppingCartItem(_ title : String,_ productDescription : String,_ image : String,_ category : String,_ price : Double,_ rate : Int32,_ count : Int32){
+        setUser()
         do{
             let shoppingCartItem = ShoppingCartItem(context: context!)
             shoppingCartItem.title = title
@@ -117,7 +121,8 @@ class DBHelper {
     }
     
     func getAllShoppingCartItem() -> [ShoppingCartItem] {
-        return user.first?.shoppingCartItem?.allObjects as! [ShoppingCartItem]
+        setUser()
+        return user.first?.shoppingCartItem?.allObjects as? [ShoppingCartItem] ?? []
     }
     
     func deleteShoppingCartItem(_ title : String){
@@ -134,6 +139,7 @@ class DBHelper {
     }
     
     func addWishListItem(_ title : String,_ productDescription : String,_ image : String,_ category : String,_ price : Double,_ rate : Int32,_ count : Int32){
+        setUser()
         do{
             let wishListItem = WishListItem(context: context!)
             wishListItem.title = title
@@ -151,6 +157,7 @@ class DBHelper {
     }
   
     func getWishListItem() -> [WishListItem]{
+        setUser()
         return user.first?.wishListItem?.allObjects as! [WishListItem]
     }
     
