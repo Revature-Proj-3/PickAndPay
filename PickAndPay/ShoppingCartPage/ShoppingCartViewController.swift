@@ -33,8 +33,14 @@ class ShoppingCartViewController: UIViewController {
     }
     
     @IBAction func signIn(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+        let page = storyBoard.instantiateViewController(withIdentifier: "Login")
+        show(page, sender: Any?.self)
     }
     @IBAction func signUp(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+        let page = storyBoard.instantiateViewController(withIdentifier: "CreateAccount")
+        show(page, sender: Any?.self)
     }
     @IBAction func continueShopping(_ sender: Any) {
     }
