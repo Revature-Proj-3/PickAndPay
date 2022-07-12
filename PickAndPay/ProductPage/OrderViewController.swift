@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Combine
 
-class OrderViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class OrderViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     
     @IBOutlet weak var collectionViewA: UICollectionView!
@@ -15,47 +16,50 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     @IBOutlet weak var collectionViewB: UICollectionView!
     
+    let viewModel = HomePageViewModel.HomePageViewModelHelper
+    
+    var observer : AnyCancellable?
+    private var products : [Product] = []
+    private var categories : [Product] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionViewA.dataSource = self
-        collectionViewA.delegate = self
-        
+
         collectionViewB.dataSource = self
         collectionViewB.delegate = self
+        
+        categories = viewModel.catList
+
     }
     
-    var imageArrayA = [UIImage(named: "android"), UIImage(named: "html")]
-    
-    var imageArrayB = [UIImage(named: "android"), UIImage(named: "html"), UIImage(named: "iOS"), UIImage(named: "java"),UIImage(named: "android"), UIImage(named: "html"), UIImage(named: "iOS"), UIImage(named: "java")]
-    
-    var labelA = ["Android", "Html"]
-    
-    var labelB = ["Android", "Html", "iOs", "Java", "Android", "Html", "iOs", "Java"]
+
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.collectionViewA{
-            return imageArrayA.count
-        }
-        return imageArrayB.count
+       
+        return categories.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.collectionViewA{
-            let myCellA =  collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OrderCollectionViewCell
-            myCellA.imgA.image = imageArrayA[indexPath.row]
-            myCellA.labelA.text = labelA[indexPath.row]
-            return myCellA
-        }
-        else{
-            let myCellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OrderCollectionViewCell
-            myCellB.imgB.image = imageArrayB[indexPath.row]
-            myCellB.labelB.text = labelB[indexPath.row]
+
+        let myCellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OrderCollectionViewCell
+
+            
+        myCellB.labelB.text = categories[indexPath.row].category.capitalized
+            
+            let url = URL(string: categories[indexPath.row].image)
+                    let data = try? Data(contentsOf: url!)
+
+                    if let imageData = data {
+                        myCellB.imgB.image = UIImage(data: imageData)
+                   }
+
             return myCellB
         }
-    }
+
     
 
    
@@ -65,8 +69,14 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
         var storyBoard = UIStoryboard(name: "Order", bundle: nil)
         var selectedVC = storyBoard.instantiateViewController(withIdentifier: "SelectedOrder") as! SelectedViewController
         
-        selectedVC.topic = labelB[indexPath.row]
-        present(selectedVC, animated: true)
+        selectedVC.topic = categories[indexPath.row].category
+//        selectedVC.topic = labelB[indexPath.row]
+        show(selectedVC, sender: Any?.self)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 500, height: 900)
     }
 
     /*

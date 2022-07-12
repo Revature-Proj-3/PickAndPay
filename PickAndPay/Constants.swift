@@ -9,4 +9,5 @@ import Foundation
 
 struct Constants {
     let apiURL = "https://fakestoreapi.com/products"
+    
 }
