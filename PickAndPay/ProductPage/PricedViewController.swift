@@ -9,6 +9,8 @@ import UIKit
 
 class PricedViewController: UIViewController {
 
+    var dbHelper = DBHelper.dbHelper
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +24,10 @@ class PricedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         descriptionLabel.sizeToFit()
         scroll.contentSize = CGSize(width: self.descriptionLabel.frame.width, height: self.descriptionLabel.frame.height + 20)
+        
+        print("This is the db Healer", dbHelper.getAllShoppingCartItem())
+        print("this is userData", dbHelper.getUserData("guest@guest.com"))
+        print("this is wish", dbHelper.getWishListItem())
     }
     
     @IBOutlet weak var scroll: UIScrollView!
@@ -34,12 +40,34 @@ class PricedViewController: UIViewController {
     var price =  ""
     var productImg = ""
     var productTitle = ""
+    var productCategory = ""
+    var productRate = 0
+    var productCount = 0
     
     
     @IBAction func addToCart(_ sender: Any) {
         
+        var newPrice = Double(price)
+        
+        dbHelper.addShoppingCartItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), Int32(productCount))
+        
+        print(productTitle)
+        print(descript)
+        print(productImg)
+        print(newPrice!)
+    }
+    
+    
+    @IBAction func wishListBtn(_ sender: Any) {
+        
+        var newPrice = Double(price)
+        
+        dbHelper.addWishListItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), Int32(productCount))
+        
+        
         
     }
+    
     
 
 }

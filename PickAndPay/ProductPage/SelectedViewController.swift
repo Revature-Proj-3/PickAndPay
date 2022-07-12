@@ -37,15 +37,6 @@ class SelectedViewController: UIViewController, UICollectionViewDelegate, UIColl
                         print("This is the ", self?.productSeclected)
                 })
         
-//        observer = orderViewModel.getProducts(from: self.topicLabel.text!)
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveValue: { [weak self] products in
-//                print("These are the ", products)
-//                self?.productSeclected = (self?.orderViewModel.fetchProducts(products))!
-//            self?.collectionSelect.reloadData()
-//                print("This is the ", self?.productSeclected)
-//        })
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +96,10 @@ class SelectedViewController: UIViewController, UICollectionViewDelegate, UIColl
         pricedVC.descript = productSeclected[indexPath.row].description
         pricedVC.productImg = productSeclected[indexPath.row].image
         pricedVC.productTitle = productSeclected[indexPath.row].title
+        pricedVC.productCategory = productSeclected[indexPath.row].category
+//        pricedVC.productRate = productSeclected[indexPath.row].rating
+//        pricedVC.productCount = productSeclected[indexPath.row]
+        
         show(pricedVC, sender: Any?.self)
     }
     
