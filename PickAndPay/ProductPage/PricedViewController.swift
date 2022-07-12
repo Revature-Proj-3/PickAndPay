@@ -62,11 +62,26 @@ class PricedViewController: UIViewController {
         
         var newPrice = Double(price)
         
+        let dialogMessage = UIAlertController(title: "Item Added", message: "Item Added To WishList", preferredStyle: .alert)
+
+            // Create Confirm button with action handler
+            let confirm = UIAlertAction(title: "Confirm", style: .default, handler: { (action) -> Void in
+            print("Confirm button tapped")
+
+            })
+
+            // Add Confrim and Cancel button to dialog message
+            dialogMessage.addAction(confirm)
+
+            // Present dialog message to user
+            self.present(dialogMessage, animated: true, completion: nil)
+        
+        
         dbHelper.addWishListItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), Int32(productCount))
-        
-        
-        
     }
+    
+    
+    
     
     
 
