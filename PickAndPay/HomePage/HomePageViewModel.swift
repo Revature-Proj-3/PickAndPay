@@ -33,19 +33,30 @@ class HomePageViewModel{
     }
     
     func setGuestUser(){
-        if(userDefault.string(forKey: "currentLoggedIn") != "guest"){
-            let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
-            user.name = "guest"
-            user.email = "guest@guest.com"
-            user.phoneNumber = "N/A"
-            user.password = "N/A"
-            user.balance = 0.00
-            do{
-                try context?.save()
-            } catch{
-                print("Error saving user")
+        do{
+            let request = User.fetchRequest() as NSFetchRequest<User>
+            let pred = NSPredicate(format: "email == %@", "guest@guest.com" )
+            request.predicate = pred
+            let userArr = try context?.fetch(request)
+            let user = userArr?.first
+            if user?.email != nil {
+                userDefault.set("guest", forKey: "currentLoggedIn")
+                return
+            }else{
+                let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
+                user.name = "guest"
+                user.email = "guest@guest.com"
+                user.phoneNumber = "N/A"
+                user.password = "N/A"
+                user.balance = 0.00
+                do{
+                    try context?.save()
+                } catch{
+                    print("Error saving user")
+                }
             }
-        
+        }catch{
+            print("error fetching user")
         }
         userDefault.set("guest", forKey: "currentLoggedIn")
     }
@@ -61,7 +72,10 @@ class HomePageViewModel{
                 }
             }
             if !contains {
-                featuredProducts.append(randomProduct!)
+                if let randomProduct = randomProduct {
+                    featuredProducts.append(randomProduct)
+                }
+                
             }
         }
 
@@ -76,9 +90,10 @@ class HomePageViewModel{
                 Just([])
             })
                 .eraseToAnyPublisher()
-        
+
         return publisher
 
     }
+    
 }
 

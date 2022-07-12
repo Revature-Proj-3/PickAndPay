@@ -94,11 +94,11 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="mZG-bp-fDw"/>
                                 </connections>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dRY-Xi-P50">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dRY-Xi-P50">
                                 <rect key="frame" x="20" y="329" width="374" height="229"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EFX-mV-t36">
-                                    <size key="itemSize" width="373" height="169"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qjW-kb-ynT">
+                                    <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -212,14 +212,25 @@
                                     <constraint firstAttribute="height" constant="218" id="MKJ-es-o4g"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error loading products" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="za3-CG-cIh">
+                                <rect key="frame" x="49.5" y="414.5" width="315" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="Hgz-hh-3f9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="Xfy-6B-W9T" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="0gM-2O-ySY"/>
                             <constraint firstItem="3xa-eJ-g8H" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="1hF-z8-HE0"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="za3-CG-cIh" secondAttribute="trailing" constant="49.5" id="1sA-ck-U5W"/>
                             <constraint firstItem="dlR-kj-25b" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="371-U4-cuk"/>
                             <constraint firstItem="dRY-Xi-P50" firstAttribute="top" secondItem="Xfy-6B-W9T" secondAttribute="bottom" constant="16" id="5Sk-rc-kok"/>
+                            <constraint firstItem="za3-CG-cIh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="49.5" id="7iH-dh-lDH"/>
                             <constraint firstItem="Xfy-6B-W9T" firstAttribute="top" secondItem="3xa-eJ-g8H" secondAttribute="bottom" constant="30" id="H0Z-dJ-UcD"/>
                             <constraint firstItem="3xa-eJ-g8H" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KVV-V1-7xe"/>
                             <constraint firstItem="dlR-kj-25b" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="KhC-5C-pNe"/>
@@ -228,11 +239,13 @@
                             <constraint firstItem="dRY-Xi-P50" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="PTb-2d-usQ"/>
                             <constraint firstItem="MDC-Gv-MEa" firstAttribute="top" secondItem="dRY-Xi-P50" secondAttribute="bottom" constant="8" symbolic="YES" id="Spd-2w-03h"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MDC-Gv-MEa" secondAttribute="trailing" constant="20" id="YEe-XL-Q3S"/>
+                            <constraint firstItem="za3-CG-cIh" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YyV-eu-SIU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MDC-Gv-MEa" secondAttribute="bottom" constant="29" id="aza-Xk-Nmr"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Xfy-6B-W9T" secondAttribute="trailing" constant="15" id="kwB-AP-wyt"/>
                             <constraint firstItem="3xa-eJ-g8H" firstAttribute="top" secondItem="dlR-kj-25b" secondAttribute="bottom" constant="5" id="mih-wg-m13"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dRY-Xi-P50" secondAttribute="trailing" constant="20" id="qLj-xU-KGL"/>
                             <constraint firstItem="MDC-Gv-MEa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tDj-Cf-ATX"/>
+                            <constraint firstItem="za3-CG-cIh" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="vDO-ZA-Gh3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TwP-JY-L9w"/>
@@ -240,6 +253,7 @@
                     <connections>
                         <outlet property="catCollectionView" destination="Xfy-6B-W9T" id="cqu-wx-6Ln"/>
                         <outlet property="createAccountButton" destination="0UL-AC-9Q9" id="Rpz-5M-K6d"/>
+                        <outlet property="errorLabel" destination="za3-CG-cIh" id="FPH-1C-EGS"/>
                         <outlet property="featuredCollectionView" destination="dRY-Xi-P50" id="MUB-Xe-nWn"/>
                         <outlet property="loadingIndicator" destination="eMV-u8-DEv" id="CtG-Zv-fBV"/>
                         <outlet property="loadingIndicator2" destination="UDM-g6-2df" id="KdG-aD-udj"/>
@@ -290,6 +304,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
