@@ -36,10 +36,8 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = searchBarDelegate
-        viewModel.setGuestUser()
         loadingIndicator.startAnimating()
         loadingIndicator2.startAnimating()
-        
         
         observer = viewModel.getProducts()
             .receive(on: DispatchQueue.main)

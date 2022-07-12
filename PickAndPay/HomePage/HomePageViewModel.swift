@@ -32,35 +32,6 @@ class HomePageViewModel{
         return catList
     }
     
-    func setGuestUser(){
-        do{
-            let request = User.fetchRequest() as NSFetchRequest<User>
-            let pred = NSPredicate(format: "email == %@", "guest@guest.com" )
-            request.predicate = pred
-            let userArr = try context?.fetch(request)
-            let user = userArr?.first
-            if user?.email != nil {
-                userDefault.set("guest", forKey: "currentLoggedIn")
-                return
-            }else{
-                let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
-                user.name = "guest"
-                user.email = "guest@guest.com"
-                user.phoneNumber = "N/A"
-                user.password = "N/A"
-                user.balance = 0.00
-                do{
-                    try context?.save()
-                } catch{
-                    print("Error saving user")
-                }
-            }
-        }catch{
-            print("error fetching user")
-        }
-        userDefault.set("guest", forKey: "currentLoggedIn")
-    }
-    
     func getFeaturedProducts(_ arr : [Product]) -> [Product] {
         
         while featuredProducts.count < 6 {
