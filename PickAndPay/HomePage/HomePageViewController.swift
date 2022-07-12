@@ -21,7 +21,6 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signInLabel: UILabel!
-    
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loadingIndicator2: UIActivityIndicatorView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
