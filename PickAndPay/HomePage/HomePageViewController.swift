@@ -22,6 +22,7 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signInLabel: UILabel!
     
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loadingIndicator2: UIActivityIndicatorView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var welcomeText: UILabel!
@@ -38,11 +39,22 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
         viewModel.setGuestUser()
         loadingIndicator.startAnimating()
         loadingIndicator2.startAnimating()
+        
+        
         observer = viewModel.getProducts()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] products in
-            self?.featuredProducts = (self?.viewModel.getFeaturedProducts(products))!
-            self?.categories = (self?.viewModel.filterCategories(products))!
+                if(products.isEmpty){
+                    print("products is empty")
+                    self?.loadingIndicator.stopAnimating()
+                    self?.loadingIndicator2.stopAnimating()
+                    self?.catCollectionView.isHidden = true
+                    self?.featuredCollectionView.isHidden = true
+                    self?.errorLabel.isHidden = false
+                    return
+                }
+            self?.featuredProducts = (self?.viewModel.getFeaturedProducts(products)) ?? []
+            self?.categories = (self?.viewModel.filterCategories(products)) ?? []
             self?.featuredCollectionView.reloadData()
             self?.catCollectionView.reloadData()
             self?.loadingIndicator.stopAnimating()
@@ -114,10 +126,20 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension HomePageViewController: UICollectionViewDelegateFlowLayout {
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         if collectionView == featuredCollectionView{
-            return CGSize(width: self.view.frame.width, height: 180.0)
+            return CGSize(width: featuredCollectionView.frame.width, height: 180.0)
+            
         }else {
             return CGSize(width: 130, height: 80)
         }
