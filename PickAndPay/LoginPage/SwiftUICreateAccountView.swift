@@ -15,7 +15,7 @@ struct SwiftUICreateAccountView: View {
         ZStack {
             Color(UIColor(named: "Background")!).ignoresSafeArea()
         VStack(spacing: 50) {
-            Text("Pick and Pay").font(.system(size: 32, weight: .semibold))
+            Text("Pick and Pay!").font(.system(size: 32, weight: .semibold))
             VStack(spacing: 30) {
                 Text("Create Account").font(.system(size: 32, weight: .medium)).frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
@@ -28,7 +28,6 @@ struct SwiftUICreateAccountView: View {
                 EntryField(sfSymbolName: "lock.shield", placeholder: "Re-Enter Password", prompt: viewModel.confirmPasswordPrompt, field: $viewModel.reEnterPassword, isSecure: true)
             }
 
-            
                 Button(action: {viewModel.signUp()}) {
                 Text("Create your Pick and Pay account!")
                     .foregroundColor(.white)
