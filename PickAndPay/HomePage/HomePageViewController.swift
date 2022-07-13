@@ -57,8 +57,6 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
             self?.loadingIndicator.stopAnimating()
             self?.loadingIndicator2.stopAnimating()
         })
-        
-        print(userDefault.string(forKey: "currentLoggedIn")!)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
