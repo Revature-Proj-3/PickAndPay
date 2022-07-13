@@ -30,7 +30,7 @@ struct SwiftUICreateAccountView: View {
 
             
                 Button(action: {viewModel.signUp()}) {
-                Text("Create your Pick and Pay account")
+                Text("Create your Pick and Pay account!")
                     .foregroundColor(.white)
                     .font(.system(size: 18, weight: .medium))
             }.frame(maxWidth: .infinity)
