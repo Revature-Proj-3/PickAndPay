@@ -8,108 +8,57 @@
 import SwiftUI
 
 struct SwiftUICreateAccountView: View {
-    @State var name = ""
-    @State var email = ""
-    @State var mobile = ""
-    @State var password = ""
+
+    @StateObject private var viewModel = UserValidation()
+    
     var body: some View {
+        ZStack {
+            Color(UIColor(named: "Background")!).ignoresSafeArea()
         VStack(spacing: 50) {
             Text("Pick and Pay").font(.system(size: 32, weight: .semibold))
-            Spacer()
             VStack(spacing: 30) {
                 Text("Create Account").font(.system(size: 32, weight: .medium)).frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
             
-            HStack {
-                Image(systemName: "person").foregroundColor(.black)
-                TextField("Name", text: $name)
+            VStack {
+                EntryField(sfSymbolName: "person", placeholder: "Name", prompt: viewModel.namePrompt, field: $viewModel.name)
+                EntryField(sfSymbolName: "envelope", placeholder: "Email", prompt: viewModel.emailPrompt, field: $viewModel.email)
+                EntryField(sfSymbolName: "phone", placeholder: "Mobile Number", prompt: viewModel.mobilePrompt, field: $viewModel.mobile)
+                EntryField(sfSymbolName: "lock", placeholder: "Password", prompt: viewModel.passwordPrompt, field: $viewModel.password, isSecure: true)
+                EntryField(sfSymbolName: "lock.shield", placeholder: "Re-Enter Password", prompt: viewModel.confirmPasswordPrompt, field: $viewModel.reEnterPassword, isSecure: true)
             }
-                .padding(.all, 10)
-                .background(Color.gray.opacity(0.3))
-                .cornerRadius(4)
-                .border(Color.black, width: 1)
-                .cornerRadius(2)
-                .padding(.horizontal, 20)
-                
-            HStack {
-                Image(systemName: "envelope").foregroundColor(.black)
-                TextField("Email", text: $email)
-            }
-                .padding(.all, 10)
-                .background(Color.gray.opacity(0.3))
-                .cornerRadius(4)
-                .border(Color.black, width: 1)
-                .cornerRadius(2)
-                .padding(.horizontal, 20)
-                
-                HStack {
-                    Image(systemName: "phone").foregroundColor(.black)
-                    TextField("Mobile number", text: $mobile)
-                }
-                    .padding(.all, 10)
-                    .background(Color.gray.opacity(0.3))
-                    .cornerRadius(4)
-                    .border(Color.black, width: 1)
-                    .cornerRadius(2)
-                    .padding(.horizontal, 20)
+
             
-            HStack {
-                Image(systemName: "lock").foregroundColor(.black)
-                SecureField("Password", text: $password)
-            }
-                .padding(.all, 10)
-                .background(Color.gray.opacity(0.3))
-                .cornerRadius(4)
-                .border(Color.black, width: 1)
-                .cornerRadius(2)
-                .padding(.horizontal, 20)
-                
-            HStack {
-                Image(systemName: "lock.shield").foregroundColor(.black)
-                SecureField("Re-enter password", text: $password)
-            }
-                .padding(.all, 10)
-                .background(Color.gray.opacity(0.3))
-                .cornerRadius(4)
-                .border(Color.black, width: 1)
-                .cornerRadius(2)
-                .padding(.horizontal, 20)
-            
-            Button(action: {}) {
+                Button(action: {viewModel.signUp()}) {
                 Text("Create your Pick and Pay account")
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .font(.system(size: 18, weight: .medium))
             }.frame(maxWidth: .infinity)
                 .padding(.vertical, 10)
-                .background(Color.yellow.opacity(0.5))
+                .background(Color(UIColor(named: "FilledButton")!))
                 .cornerRadius(4)
                 .border(Color.black, width: 1)
                 .cornerRadius(2)
                 .padding(.horizontal, 20)
-            
-                HStack {
-                    Text("Already have an account?")
-                    .foregroundColor(.black.opacity(0.5))
-                    .frame(maxWidth: 200, alignment: .center)
-                        .padding(.horizontal, 10)
-            
-            Button(action: {}) {
-                Text("Sign in")
-                    .foregroundColor(.blue)
-                    .font(.system(size: 18, weight: .medium))
-            }.frame(maxWidth: 60, alignment: .leading)
-        }
-                
+                .opacity(viewModel.canSubmit ? 1 : 0.6)
+                .disabled(!viewModel.canSubmit)
             }.frame(width: 375, height: 550).border(.gray.opacity(0.5))
+                .background(Color.white)
             Spacer()
             Spacer()
+            }
         }
     }
+    
+    
+    
 }
 
 struct SwiftUICreateAccountView_Previews: PreviewProvider {
     static var previews: some View {
         SwiftUICreateAccountView()
-            .accessibilityIdentifier("CreateAccount")
+            
     }
 }
+
+
