@@ -24,24 +24,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let userArr = try context?.fetch(request)
                     let user = userArr?.first
                     if user?.email != nil {
-                        userDefault.set("guest", forKey: "currentLoggedIn")
+                        userDefault.set("guest@guest.com", forKey: "currentLoggedIn")
                     }else{
-                        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
-                        user.name = "guest"
-                        user.email = "guest@guest.com"
-                        user.phoneNumber = "N/A"
-                        user.password = "N/A"
-                        user.balance = 0.00
+                        let newUser = User(context: context!)
+                        newUser.name = "guest"
+                        newUser.email = "guest@guest.com"
+                        newUser.phoneNumber = "N/A"
+                        newUser.password = "N/A"
+                        newUser.balance = 0.00
                         do{
                             try context?.save()
-                        } catch{
-                            print("Error saving user")
+                            print(newUser.name)
+                        }catch{
+                            print("error saving User")
                         }
+//                        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context!) as! User
+//                        user.name = "guest"
+//                        user.email = "guest@guest.com"
+//                        user.phoneNumber = "N/A"
+//                        user.password = "N/A"
+//                        user.balance = 0.00
+//                        do{
+//                            try context?.save()
+//                        } catch{
+//                            print("Error saving user")
+//                        }
                     }
                 }catch{
                     print("error fetching user")
                 }
-                userDefault.set("guest", forKey: "currentLoggedIn")
+                userDefault.set("guest@guest.com", forKey: "currentLoggedIn")
         return true
     }
 

@@ -6,44 +6,76 @@
 //
 
 import UIKit
+import Combine
 
-class SelectedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SelectedViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
+    let orderViewModel = OrderViewModel.OrderViewModelHelper
+    let viewModel = HomePageViewModel.HomePageViewModelHelper
+    
+    var observer : AnyCancellable?
+    var productSeclected : [Product] = []
+//    var products : [Product] = []
 
+    @IBOutlet weak var collectionSelect: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        topicLabel.text = topic
+        collectionSelect.dataSource = self
+        collectionSelect.delegate = self
         
+        topicLabel.text = topic.capitalized
+        
+        observer = orderViewModel.getProducts(from: self.topicLabel.text!.lowercased())
+                    .receive(on: DispatchQueue.main)
+                    .sink(receiveValue: { [weak self] products in
+                        print("These are the ", products)
+                        self?.productSeclected = products
+                    self?.collectionSelect.reloadData()
+                        print("This is the ", self?.productSeclected)
+                })
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionSelect.reloadData()
+        sleep(1)
+    }
+    
+    
     @IBOutlet weak var topicLabel: UILabel!
     
-    
-    var textImg = ["grad2", "grad3", "grad4", "love"]
-    
-    var textLabel = ["Bold and Beautiful", "Young and Restless", "Days of Our Lives", "Love and Hip Hop"]
-    
-    var priceLabel = ["$2.99", "$29.99", "$19.99", "$59.99"]
+
     
     var topic = ""
     
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        textImg.count
+        return productSeclected.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SelectedCollectionViewCell
         
-        myCell.productName.text = textLabel[indexPath.row]
-        myCell.productPrice.text = priceLabel[indexPath.row]
-        myCell.productImg.image = UIImage(named: textImg[indexPath.row])
+        myCell.productName.text = productSeclected[indexPath.row].title
+        myCell.productPrice.text = String( productSeclected[indexPath.row].price)
+        let url = URL(string: productSeclected[indexPath.row].image)
+                let data = try? Data(contentsOf: url!)
+
+                if let imageData = data {
+                    myCell.productImg.image = UIImage(data: imageData)
+                }
         
         return myCell
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
     }
     
     
@@ -53,14 +85,22 @@ class SelectedViewController: UIViewController, UICollectionViewDelegate, UIColl
         var storyBoard2 = UIStoryboard(name: "Order", bundle: nil)
         var pricedVC = storyBoard2.instantiateViewController(withIdentifier: "PricedOrder") as! PricedViewController
         
-        //change to nil coalesing from a force
-        pricedVC.pricedPicture =   UIImage(named: textImg[indexPath.row])!
+//        var storyBoard3 = UIStoryboard(name: "Order", bundle: nil)
+//        
+////        var pCV = storyBoard3.instantiateViewController(withIdentifier: "PricedOrder") as! PricedCollectionViewController
+//        
+//        
+////        pCV.descript = productSeclected[indexPath.row].description
         
+        pricedVC.price = String(productSeclected[indexPath.row].price)
+        pricedVC.descript = productSeclected[indexPath.row].description
+        pricedVC.productImg = productSeclected[indexPath.row].image
+        pricedVC.productTitle = productSeclected[indexPath.row].title
+        pricedVC.productCategory = productSeclected[indexPath.row].category
+//        pricedVC.productRate = productSeclected[indexPath.row].rating
+//        pricedVC.productCount = productSeclected[indexPath.row]
         
-        pricedVC.price = priceLabel[indexPath.row]
-        pricedVC.descript = textLabel[indexPath.row]
-        
-        present(pricedVC, animated: true)
+        show(pricedVC, sender: Any?.self)
     }
     
     
