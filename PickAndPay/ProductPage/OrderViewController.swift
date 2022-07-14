@@ -11,10 +11,12 @@ import Combine
 class OrderViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     
-    @IBOutlet weak var collectionViewA: UICollectionView!
-    
-    
+
     @IBOutlet weak var collectionViewB: UICollectionView!
+    
+    @IBOutlet weak var productErrorLabel: UILabel!
+    
+    
     
     let viewModel = HomePageViewModel.HomePageViewModelHelper
     
@@ -26,11 +28,23 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         collectionViewB.dataSource = self
         collectionViewB.delegate = self
         
-        categories = viewModel.catList
+        
+        observer = viewModel.getProducts()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {[weak self] products in
+                if(products.isEmpty){
+                    self?.collectionViewB.isHidden = true
+                    self?.productErrorLabel.isHidden = false
+                    return
+                }
+                self?.categories = self?.viewModel.self.catList ?? []
+                self?.collectionViewB.reloadData()
+            })
+        
+        
 
     }
     
@@ -52,7 +66,6 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
             
             let url = URL(string: categories[indexPath.row].image)
                     let data = try? Data(contentsOf: url!)
-
                     if let imageData = data {
                         myCellB.imgB.image = UIImage(data: imageData)
                    }
@@ -68,9 +81,7 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         var storyBoard = UIStoryboard(name: "Order", bundle: nil)
         var selectedVC = storyBoard.instantiateViewController(withIdentifier: "SelectedOrder") as! SelectedViewController
-        
         selectedVC.topic = categories[indexPath.row].category
-//        selectedVC.topic = labelB[indexPath.row]
         show(selectedVC, sender: Any?.self)
     }
     
@@ -90,3 +101,4 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
     */
 
 }
+
