@@ -8,10 +8,17 @@
 import Foundation
 import UIKit
 
-class SearchBarDelegateFile : NSObject, UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //TODO: - add search functionality
-        print(searchBar.text!)
-        
+class SearchBarDelegateFile {
+    static var searchHelper = SearchBarDelegateFile()
+    
+    func findSearchItems(_ arr : [Product],_ searchTerm : String) -> [Product] {
+        var foundItems : [Product] = []
+        for item in arr {
+            if(item.title.lowercased().contains(searchTerm.lowercased())){
+                foundItems.append(item)
+            }
+        }
+        return foundItems
     }
+
 }

@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class HomePageViewController: UIViewController, UISearchBarDelegate {
+class HomePageViewController: UIViewController {
 
     let viewModel = HomePageViewModel.HomePageViewModelHelper
 
@@ -29,12 +29,15 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
     private var products : [Product] = []
     private var categories : [Product] = []
     private var featuredProducts : [Product] = []
-    let searchBarDelegate = SearchBarDelegateFile()
+    let searchBarDelegate = SearchBarDelegateFile.searchHelper
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = searchBarDelegate
+        let user = User()
+        print(user)
+        searchBar.delegate = self
+        //searchBar.delegate = searchBarDelegate
         loadingIndicator.startAnimating()
         loadingIndicator2.startAnimating()
         
@@ -52,6 +55,7 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
                 }
             self?.featuredProducts = (self?.viewModel.getFeaturedProducts(products)) ?? []
             self?.categories = (self?.viewModel.filterCategories(products)) ?? []
+            self?.products = (self?.viewModel.productList) ?? []
             self?.featuredCollectionView.reloadData()
             self?.catCollectionView.reloadData()
             self?.loadingIndicator.stopAnimating()
@@ -61,7 +65,7 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         let currentUser = userDefault.string(forKey: "currentLoggedIn")
-        if currentUser != "guest" {
+        if currentUser != "guest@guest.com" {
             welcomeText.isHidden = false
             signInLabel.text = currentUser
             signInButton.isHidden = true
@@ -116,6 +120,25 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             return cell2
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == featuredCollectionView {
+            let storyBoard = UIStoryboard(name: "Order", bundle: nil)
+            let pricedVC = storyBoard.instantiateViewController(withIdentifier: "PricedOrder") as! PricedViewController
+            pricedVC.price = String(featuredProducts[indexPath.row].price)
+            pricedVC.descript = featuredProducts[indexPath.row].description
+            pricedVC.productImg = featuredProducts[indexPath.row].image
+            pricedVC.productTitle = featuredProducts[indexPath.row].title
+            pricedVC.productCategory = featuredProducts[indexPath.row].category
+            
+            show(pricedVC, sender: Any?.self)
+        }else{
+            let storyBoard = UIStoryboard(name: "Order", bundle: nil)
+            let selectedVC = storyBoard.instantiateViewController(withIdentifier: "SelectedOrder") as! SelectedViewController
+            selectedVC.topic = categories[indexPath.row].category
+
+            show(selectedVC, sender: Any?.self)
+        }
+    }
 
 }
 
@@ -141,4 +164,22 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
+// MARK: - UISearchBarDelegate
+extension HomePageViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if(searchBar.text != ""){
+            let result = searchBarDelegate.findSearchItems(products, searchBar.text!)
+//            if result.isEmpty {
+//                print("no results found")
+//                return
+//            }
+            let storyBoard = UIStoryboard(name: "HomePage", bundle: nil)
+            let selectedVC = storyBoard.instantiateViewController(withIdentifier: "searchPageController") as! SearchPageViewController
+            
+            selectedVC.products = result
+            show(selectedVC, sender: Any?.self)
+        }
+    }
+    
+}

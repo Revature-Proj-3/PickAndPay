@@ -33,7 +33,7 @@ class HomePageViewModel{
     }
     
     func getFeaturedProducts(_ arr : [Product]) -> [Product] {
-        
+        productList = arr
         while featuredProducts.count < 6 {
             let randomProduct = arr.randomElement()
             var contains = false
