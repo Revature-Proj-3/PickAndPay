@@ -53,6 +53,24 @@ class DBHelper {
         return user
     }
     
+    func checkIfUserExists(_ email : String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "email == %@", email)
+        fetchRequest.fetchLimit = 1
+        do{
+            let req = try context?.fetch(fetchRequest) as! [User]
+            if(req.count != 0){
+                return true
+            } else{
+                print("No user by that name")
+                return false
+            }
+        } catch {
+            print("error getting user data")
+        }
+        return false
+    }
+    
     func setUser(){
         let email = userDefault.string(forKey: "currentLoggedIn")
         do{
