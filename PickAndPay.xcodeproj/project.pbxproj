@@ -34,6 +34,7 @@
 		842DF1E0287741290096FAE2 /* UserValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1DF287741290096FAE2 /* UserValidation.swift */; };
 		842DF1E228775AF10096FAE2 /* LoginSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1E128775AF10096FAE2 /* LoginSwiftUIViewController.swift */; };
 		842DF1E428775D440096FAE2 /* CreateAccountSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF1E328775D440096FAE2 /* CreateAccountSwiftUIViewController.swift */; };
+		842DF22E287F79340096FAE2 /* EntryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DF22D287F79330096FAE2 /* EntryField.swift */; };
 		84C14AD6286B94F6006BE029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD5286B94F6006BE029 /* AppDelegate.swift */; };
 		84C14AD8286B94F6006BE029 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD7286B94F6006BE029 /* SceneDelegate.swift */; };
 		84C14ADA286B94F6006BE029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AD9286B94F6006BE029 /* ViewController.swift */; };
@@ -91,6 +92,7 @@
 		842DF1DF287741290096FAE2 /* UserValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserValidation.swift; sourceTree = "<group>"; };
 		842DF1E128775AF10096FAE2 /* LoginSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwiftUIViewController.swift; sourceTree = "<group>"; };
 		842DF1E328775D440096FAE2 /* CreateAccountSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountSwiftUIViewController.swift; sourceTree = "<group>"; };
+		842DF22D287F79330096FAE2 /* EntryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryField.swift; sourceTree = "<group>"; };
 		84C14AD2286B94F6006BE029 /* PickAndPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickAndPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14AD5286B94F6006BE029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C14AD7286B94F6006BE029 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				842DF1E128775AF10096FAE2 /* LoginSwiftUIViewController.swift */,
 				842DF1D32875F01A0096FAE2 /* LoginViewController.swift */,
 				842DF1DF287741290096FAE2 /* UserValidation.swift */,
+				842DF22D287F79330096FAE2 /* EntryField.swift */,
 				842DF1CF2875EF4D0096FAE2 /* SwiftUICreateAccountView.swift */,
 				842DF1CD2875EF0C0096FAE2 /* SwiftUILoginView.swift */,
 			);
@@ -394,7 +397,6 @@
 				70DEE1BD2875F5A20045FC1E /* OrderViewController.swift in Sources */,
 				73DECAC0286F521600D8259A /* ShoppingCartTableViewCell.swift in Sources */,
 				73B3640128772DE700C84882 /* DBHelper.swift in Sources */,
-				70DEE1C32875F5C20045FC1E /* PricedCollectionViewCell.swift in Sources */,
 				841E9589286E0C010084B202 /* HomePageViewController.swift in Sources */,
 				842DF1E428775D440096FAE2 /* CreateAccountSwiftUIViewController.swift in Sources */,
 				70DEE1C72875F7580045FC1E /* SelectedCollectionViewCell.swift in Sources */,
@@ -405,6 +407,7 @@
 				84C14AE0286B94F6006BE029 /* PickAndPay.xcdatamodeld in Sources */,
 				841E958D286F28C20084B202 /* FeaturedCollectionViewCell.swift in Sources */,
 				73DECABE286F514300D8259A /* ShoppingCartViewController.swift in Sources */,
+				842DF22E287F79340096FAE2 /* EntryField.swift in Sources */,
 				70DEE1BF2875F5A80045FC1E /* PricedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
