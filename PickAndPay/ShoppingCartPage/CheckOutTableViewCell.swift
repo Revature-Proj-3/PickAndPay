@@ -1,17 +1,17 @@
 //
-//  ShoppingCartTableViewCell.swift
+//  CheckOutTableViewCell.swift
 //  PickAndPay
 //
-//  Created by Matt Caulder on 7/1/22.
+//  Created by Matt Caulder on 7/18/22.
 //
 
 import UIKit
 
-class ShoppingCartTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var cartImage: UIImageView!
-    @IBOutlet weak var cartPrice: UILabel!
-    @IBOutlet weak var cartTitle: UILabel!
+class CheckOutTableViewCell: UITableViewCell {
+    @IBOutlet weak var checkOutTitle: UILabel!
+    @IBOutlet weak var checkOutPrice: UILabel!
+    @IBOutlet weak var itemImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

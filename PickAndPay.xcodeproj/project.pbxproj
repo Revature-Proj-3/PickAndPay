@@ -18,6 +18,8 @@
 		73B3640128772DE700C84882 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B3640028772DE700C84882 /* DBHelper.swift */; };
 		73DECABE286F514300D8259A /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DECABD286F514300D8259A /* ShoppingCartViewController.swift */; };
 		73DECAC0286F521600D8259A /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */; };
+		73EA8ED5288586DD009BB261 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA8ED4288586DD009BB261 /* CheckOutViewController.swift */; };
+		73EA8ED7288587D4009BB261 /* CheckOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA8ED6288587D4009BB261 /* CheckOutTableViewCell.swift */; };
 		841E9585286DFEBD0084B202 /* TabController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841E9584286DFEBD0084B202 /* TabController.storyboard */; };
 		841E9587286E016B0084B202 /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841E9586286E016B0084B202 /* HomePage.storyboard */; };
 		841E9589286E0C010084B202 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9588286E0C010084B202 /* HomePageViewController.swift */; };
@@ -76,6 +78,8 @@
 		73B3640028772DE700C84882 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		73DECABD286F514300D8259A /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
+		73EA8ED4288586DD009BB261 /* CheckOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
+		73EA8ED6288587D4009BB261 /* CheckOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutTableViewCell.swift; sourceTree = "<group>"; };
 		841E9584286DFEBD0084B202 /* TabController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabController.storyboard; sourceTree = "<group>"; };
 		841E9586286E016B0084B202 /* HomePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomePage.storyboard; sourceTree = "<group>"; };
 		841E9588286E0C010084B202 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 			children = (
 				73DECABD286F514300D8259A /* ShoppingCartViewController.swift */,
 				73DECABF286F521600D8259A /* ShoppingCartTableViewCell.swift */,
+				73EA8ED4288586DD009BB261 /* CheckOutViewController.swift */,
+				73EA8ED6288587D4009BB261 /* CheckOutTableViewCell.swift */,
 			);
 			path = ShoppingCartPage;
 			sourceTree = "<group>";
@@ -398,6 +404,7 @@
 				73DECAC0286F521600D8259A /* ShoppingCartTableViewCell.swift in Sources */,
 				73B3640128772DE700C84882 /* DBHelper.swift in Sources */,
 				841E9589286E0C010084B202 /* HomePageViewController.swift in Sources */,
+				73EA8ED7288587D4009BB261 /* CheckOutTableViewCell.swift in Sources */,
 				842DF1E428775D440096FAE2 /* CreateAccountSwiftUIViewController.swift in Sources */,
 				70DEE1C72875F7580045FC1E /* SelectedCollectionViewCell.swift in Sources */,
 				841E95CC287883290084B202 /* SearchBarDelegateFile.swift in Sources */,
@@ -406,6 +413,7 @@
 				842DF1CE2875EF0C0096FAE2 /* SwiftUILoginView.swift in Sources */,
 				84C14AE0286B94F6006BE029 /* PickAndPay.xcdatamodeld in Sources */,
 				841E958D286F28C20084B202 /* FeaturedCollectionViewCell.swift in Sources */,
+				73EA8ED5288586DD009BB261 /* CheckOutViewController.swift in Sources */,
 				73DECABE286F514300D8259A /* ShoppingCartViewController.swift in Sources */,
 				842DF22E287F79340096FAE2 /* EntryField.swift in Sources */,
 				70DEE1BF2875F5A80045FC1E /* PricedViewController.swift in Sources */,

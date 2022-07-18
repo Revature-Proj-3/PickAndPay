@@ -66,17 +66,19 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingCartCell", for: indexPath) as! ShoppingCartTableViewCell
-        cell.textLabel?.text = cartItems[indexPath.row].title
-        cell.detailTextLabel?.text = cartItems[indexPath.row].productDescription
+        cell.cartTitle.text = cartItems[indexPath.row].title
+        cell.cartPrice.text = String(cartItems[indexPath.row].price)
+        let url = URL(string: cartItems[indexPath.row].image!)
+                let data = try? Data(contentsOf: url!)
+
+                if let imageData = data {
+                    cell.cartImage.image = UIImage(data: imageData)
+                }
         
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cartHelper.deleteShoppingCartItem(cartItems[indexPath.row].title!)
-        self.shoppingCartTableView.reloadData()
+        return 150
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
