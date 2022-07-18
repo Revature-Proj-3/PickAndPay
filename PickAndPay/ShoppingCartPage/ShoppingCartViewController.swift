@@ -89,7 +89,9 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
         do{
             try cartHelper.context!.save()
         }
-        catch{}
+        catch{
+            print("error deleting item")
+        }
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
