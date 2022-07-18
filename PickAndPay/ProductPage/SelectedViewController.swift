@@ -33,8 +33,9 @@ class SelectedViewController: UIViewController, UICollectionViewDelegate, UIColl
                     .sink(receiveValue: { [weak self] products in
                         print("These are the ", products)
                         self?.productSeclected = products
-                    self?.collectionSelect.reloadData()
+                        self?.collectionSelect.reloadData()
                         print("This is the ", self?.productSeclected)
+                        
                 })
         
     }
@@ -61,7 +62,7 @@ class SelectedViewController: UIViewController, UICollectionViewDelegate, UIColl
         var myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SelectedCollectionViewCell
         
         myCell.productName.text = productSeclected[indexPath.row].title
-        myCell.productPrice.text = String( productSeclected[indexPath.row].price)
+        myCell.productPrice.text = String(orderViewModel.priceSetter(price: String(productSeclected[indexPath.row].price)))
         let url = URL(string: productSeclected[indexPath.row].image)
                 let data = try? Data(contentsOf: url!)
 

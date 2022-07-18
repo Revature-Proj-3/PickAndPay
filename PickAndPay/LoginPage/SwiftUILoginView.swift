@@ -11,6 +11,8 @@ struct SwiftUILoginView: View {
     @State var emailOrMobile = ""
     @State var password = ""
     var body: some View {
+        ZStack {
+            Color(UIColor(named: "Background")!).ignoresSafeArea()
         VStack(spacing: 50) {
             Text("Pick and Pay").font(.system(size: 32, weight: .semibold))
             Spacer()
@@ -42,34 +44,20 @@ struct SwiftUILoginView: View {
             
             Button(action: {}) {
                 Text("Login")
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .font(.system(size: 18, weight: .medium))
             }.frame(maxWidth: .infinity)
                 .padding(.vertical, 10)
-                .background(Color.yellow.opacity(0.5))
+                .background(Color(UIColor(named: "FilledButton")!))
                 .cornerRadius(4)
                 .border(Color.black, width: 1)
                 .cornerRadius(2)
                 .padding(.horizontal, 20)
-            
-                Text("New to Pick and Pay?")
-                    .foregroundColor(.black.opacity(0.5))
-            
-            Button(action: {}) {
-                Text("I am a new customer")
-                    .foregroundColor(.black)
-                    .font(.system(size: 18, weight: .medium))
-            }.frame(maxWidth: .infinity)
-                .padding(.vertical, 10)
-                .background(Color.gray.opacity(0.5))
-                .cornerRadius(4)
-                .border(Color.black, width: 1)
-                .cornerRadius(2)
-                .padding(.horizontal, 20)
-                
             }.frame(width: 375, height: 410).border(.gray.opacity(0.5))
+                .background(Color.white)
             Spacer()
             Spacer()
+            }
         }
     }
 }
@@ -77,6 +65,6 @@ struct SwiftUILoginView: View {
 struct SwiftUILoginView_Previews: PreviewProvider {
     static var previews: some View {
         SwiftUILoginView()
-            .accessibilityIdentifier("Login")
+            
     }
 }

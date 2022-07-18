@@ -43,6 +43,13 @@ class OrderViewModel{
     }
     
     
+    func priceSetter(price: String) -> String{
+        
+        var definedPrice = Double(price)!
+        var newPrice = round(definedPrice * 100) / 100
+        
+        return String(format: "%.2f", newPrice)
+    }
     
     
     
