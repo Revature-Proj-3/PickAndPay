@@ -10,12 +10,13 @@ import UIKit
 class PricedViewController: UIViewController {
 
     var dbHelper = DBHelper.dbHelper
+    var orderView = OrderViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         descriptionLabel.text = descript
-        priceLabel.text = price
+        priceLabel.text = orderView.priceSetter(price: price)
         priceImg.fetchImage(urlString: productImg)
         priceTitle.text = productTitle
     }
@@ -23,7 +24,7 @@ class PricedViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         descriptionLabel.sizeToFit()
-        scroll.contentSize = CGSize(width: self.descriptionLabel.frame.width, height: self.descriptionLabel.frame.height + 20)
+        scroll.contentSize = CGSize(width: self.descriptionLabel.frame.width, height: self.descriptionLabel.frame.height + 15)
         
         print("This is the db Healer", dbHelper.getAllShoppingCartItem())
         print("this is userData", dbHelper.getUserData("guest@guest.com"))
@@ -62,7 +63,7 @@ class PricedViewController: UIViewController {
         
         var newPrice = Double(price)
         
-        let dialogMessage = UIAlertController(title: "Item Added", message: "Item Added To WishList", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "Item Added", message: "Would you like to add your Item to WishList", preferredStyle: .alert)
 
             // Create Confirm button with action handler
             let confirm = UIAlertAction(title: "Confirm", style: .default, handler: { (action) -> Void in
@@ -78,6 +79,9 @@ class PricedViewController: UIViewController {
         
         dbHelper.addWishListItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), Int32(productCount))
     }
+    
+    
+
     
     
 
