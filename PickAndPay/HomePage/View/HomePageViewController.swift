@@ -41,18 +41,69 @@ class HomePageViewController: UIViewController {
         loadingIndicator.startAnimating()
         loadingIndicator2.startAnimating()
         
+//        observer = viewModel.getProducts()
+//            .receive(on: DispatchQueue.main)
+//            .sink(receiveValue: { [weak self] products in
+//                print(products)
+//                if(products.isEmpty){
+//                    print("products is empty")
+//                    self?.loadingIndicator.stopAnimating()
+//                    self?.loadingIndicator2.stopAnimating()
+//                    self?.catCollectionView.isHidden = true
+//                    self?.featuredCollectionView.isHidden = true
+//                    self?.errorLabel.isHidden = false
+//                    return
+//                }
+//            self?.featuredProducts = (self?.viewModel.getFeaturedProducts(products)) ?? []
+//            self?.categories = (self?.viewModel.filterCategories(products)) ?? []
+//            self?.products = (self?.viewModel.productList) ?? []
+//            self?.featuredCollectionView.reloadData()
+//            self?.catCollectionView.reloadData()
+//            self?.loadingIndicator.stopAnimating()
+//            self?.loadingIndicator2.stopAnimating()
+//        })
         observer = viewModel.getProducts()
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] products in
-                if(products.isEmpty){
-                    print("products is empty")
-                    self?.loadingIndicator.stopAnimating()
-                    self?.loadingIndicator2.stopAnimating()
-                    self?.catCollectionView.isHidden = true
-                    self?.featuredCollectionView.isHidden = true
-                    self?.errorLabel.isHidden = false
-                    return
+            .sink(receiveCompletion: { completion in
+               // print("in completion, ", v)
+                if case let .failure(error) = completion {
+                    print(error)
+                    switch error {
+                    case .sessionFailed ://(error: error):
+                        //handle URL error
+                        self.loadingIndicator.stopAnimating()
+                        self.loadingIndicator2.stopAnimating()
+                        self.catCollectionView.isHidden = true
+                        self.featuredCollectionView.isHidden = true
+                        self.errorLabel.isHidden = false
+                        self.errorLabel.text = "Please check your network"
+                        return
+                    case .decodingFailed:
+                        //handle decoding error
+                        self.loadingIndicator.stopAnimating()
+                        self.loadingIndicator2.stopAnimating()
+                        self.catCollectionView.isHidden = true
+                        self.featuredCollectionView.isHidden = true
+                        self.errorLabel.isHidden = false
+                        return
+                    default:
+                        //handle "other" error
+                        print(error)
+                    }
                 }
+                
+            }
+                ,receiveValue: { [weak self] products in
+//                print(products)
+//                if(products.isEmpty){
+//                    print("products is empty")
+//                    self?.loadingIndicator.stopAnimating()
+//                    self?.loadingIndicator2.stopAnimating()
+//                    self?.catCollectionView.isHidden = true
+//                    self?.featuredCollectionView.isHidden = true
+//                    self?.errorLabel.isHidden = false
+//                    return
+//                }
             self?.featuredProducts = (self?.viewModel.getFeaturedProducts(products)) ?? []
             self?.categories = (self?.viewModel.filterCategories(products)) ?? []
             self?.products = (self?.viewModel.productList) ?? []
@@ -170,10 +221,7 @@ extension HomePageViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if(searchBar.text != ""){
             let result = searchBarDelegate.findSearchItems(products, searchBar.text!)
-//            if result.isEmpty {
-//                print("no results found")
-//                return
-//            }
+            
             let storyBoard = UIStoryboard(name: "HomePage", bundle: nil)
             let selectedVC = storyBoard.instantiateViewController(withIdentifier: "searchPageController") as! SearchPageViewController
             

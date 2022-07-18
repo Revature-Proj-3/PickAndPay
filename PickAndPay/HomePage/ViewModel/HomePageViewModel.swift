@@ -53,16 +53,31 @@ class HomePageViewModel{
         return featuredProducts
     }
     
-    func getProducts() -> AnyPublisher<[Product], Never>{
-        let publisher = URLSession.shared.dataTaskPublisher(for: URL(string: constants.apiURL)!)
+    enum FailureReason : Error {
+        case sessionFailed//(error: URLError)
+        case decodingFailed
+        case other(Error)
+    }
+    
+    func getProducts() -> AnyPublisher<[Product], FailureReason>{
+        return URLSession.shared.dataTaskPublisher(for: URL(string: constants.apiURL)!)
             .map({$0.data})
             .decode(type: [Product].self, decoder: JSONDecoder())
-            .catch({ _ in
-                Just([])
+            .mapError({ error in
+                switch error {
+            case is Swift.DecodingError:
+                return .decodingFailed
+            case let urlError as URLError:
+                return .sessionFailed//(error: urlError)
+            default:
+                return .other(error)
+                }
+            //.catch({ error in
+             //   Just([])
             })
                 .eraseToAnyPublisher()
 
-        return publisher
+       // return publisher
 
     }
     

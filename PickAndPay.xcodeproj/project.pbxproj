@@ -161,15 +161,10 @@
 		841E958E286F386F0084B202 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				841E958C286F28C20084B202 /* FeaturedCollectionViewCell.swift */,
-				841E9588286E0C010084B202 /* HomePageViewController.swift */,
-				841E958A286E26720084B202 /* HomePageCategoryCollectionViewCell.swift */,
-				841E9586286E016B0084B202 /* HomePage.storyboard */,
-				841E958F286F388C0084B202 /* HomePageModel.swift */,
-				841E9591286F38980084B202 /* HomePageViewModel.swift */,
-				841E95CB287883290084B202 /* SearchBarDelegateFile.swift */,
-				84FC2AD3287F272700259151 /* SearchPageViewController.swift */,
-				84FC2AD5287F273D00259151 /* SearchPageCollectionViewCell.swift */,
+				841E9593286F3A750084B202 /* Constants.swift */,
+				84AD8D032885EB430071AAE6 /* View */,
+				84AD8D042885EB4A0071AAE6 /* Model */,
+				84AD8D052885EB510071AAE6 /* ViewModel */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -186,6 +181,36 @@
 				842DF1CD2875EF0C0096FAE2 /* SwiftUILoginView.swift */,
 			);
 			path = LoginPage;
+			sourceTree = "<group>";
+		};
+		84AD8D032885EB430071AAE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				841E958C286F28C20084B202 /* FeaturedCollectionViewCell.swift */,
+				84FC2AD5287F273D00259151 /* SearchPageCollectionViewCell.swift */,
+				84FC2AD3287F272700259151 /* SearchPageViewController.swift */,
+				841E958A286E26720084B202 /* HomePageCategoryCollectionViewCell.swift */,
+				841E9588286E0C010084B202 /* HomePageViewController.swift */,
+				841E9586286E016B0084B202 /* HomePage.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84AD8D042885EB4A0071AAE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				841E958F286F388C0084B202 /* HomePageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84AD8D052885EB510071AAE6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				841E95CB287883290084B202 /* SearchBarDelegateFile.swift */,
+				841E9591286F38980084B202 /* HomePageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		84C14AC9286B94F6006BE029 = {
@@ -225,7 +250,6 @@
 				84C14AE6286B94F7006BE029 /* Info.plist */,
 				84C14ADE286B94F6006BE029 /* PickAndPay.xcdatamodeld */,
 				841E9584286DFEBD0084B202 /* TabController.storyboard */,
-				841E9593286F3A750084B202 /* Constants.swift */,
 				842DF1DE2875F1B20096FAE2 /* LoginPage */,
 				841E958E286F386F0084B202 /* HomePage */,
 			);
