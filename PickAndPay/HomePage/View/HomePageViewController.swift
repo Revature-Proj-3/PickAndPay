@@ -11,9 +11,7 @@ import Combine
 class HomePageViewController: UIViewController {
 
     let viewModel = HomePageViewModel.HomePageViewModelHelper
-
     let userDefault = UserDefaults.standard
-    
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var catCollectionView: UICollectionView!
@@ -34,50 +32,19 @@ class HomePageViewController: UIViewController {
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let user = User()
-        print(user)
         searchBar.delegate = self
-        //searchBar.delegate = searchBarDelegate
         loadingIndicator.startAnimating()
         loadingIndicator2.startAnimating()
-        
-//        observer = viewModel.getProducts()
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveValue: { [weak self] products in
-//                print(products)
-//                if(products.isEmpty){
-//                    print("products is empty")
-//                    self?.loadingIndicator.stopAnimating()
-//                    self?.loadingIndicator2.stopAnimating()
-//                    self?.catCollectionView.isHidden = true
-//                    self?.featuredCollectionView.isHidden = true
-//                    self?.errorLabel.isHidden = false
-//                    return
-//                }
-//            self?.featuredProducts = (self?.viewModel.getFeaturedProducts(products)) ?? []
-//            self?.categories = (self?.viewModel.filterCategories(products)) ?? []
-//            self?.products = (self?.viewModel.productList) ?? []
-//            self?.featuredCollectionView.reloadData()
-//            self?.catCollectionView.reloadData()
-//            self?.loadingIndicator.stopAnimating()
-//            self?.loadingIndicator2.stopAnimating()
-//        })
+
         observer = viewModel.getProducts()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
-               // print("in completion, ", v)
                 if case let .failure(error) = completion {
-                    print(error)
                     switch error {
-                    case .sessionFailed ://(error: error):
+                    case .sessionFailed:
                         //handle URL error
-                        self.loadingIndicator.stopAnimating()
-                        self.loadingIndicator2.stopAnimating()
-                        self.catCollectionView.isHidden = true
-                        self.featuredCollectionView.isHidden = true
-                        self.errorLabel.isHidden = false
                         self.errorLabel.text = "Please check your network"
-                        return
+                        fallthrough
                     case .decodingFailed:
                         //handle decoding error
                         self.loadingIndicator.stopAnimating()
@@ -91,19 +58,7 @@ class HomePageViewController: UIViewController {
                         print(error)
                     }
                 }
-                
-            }
-                ,receiveValue: { [weak self] products in
-//                print(products)
-//                if(products.isEmpty){
-//                    print("products is empty")
-//                    self?.loadingIndicator.stopAnimating()
-//                    self?.loadingIndicator2.stopAnimating()
-//                    self?.catCollectionView.isHidden = true
-//                    self?.featuredCollectionView.isHidden = true
-//                    self?.errorLabel.isHidden = false
-//                    return
-//                }
+            },receiveValue: { [weak self] products in
             self?.featuredProducts = (self?.viewModel.getFeaturedProducts(products)) ?? []
             self?.categories = (self?.viewModel.filterCategories(products)) ?? []
             self?.products = (self?.viewModel.productList) ?? []
@@ -113,6 +68,8 @@ class HomePageViewController: UIViewController {
             self?.loadingIndicator2.stopAnimating()
         })
     }
+    
+    //MARK: - viewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         let currentUser = userDefault.string(forKey: "currentLoggedIn")
@@ -150,24 +107,11 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == catCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as!      HomePageCategoryCollectionViewCell
-            cell.label.text = categories[indexPath.row].category
-            let url = URL(string: categories[indexPath.row].image)
-                    let data = try? Data(contentsOf: url!)
-
-                    if let imageData = data {
-                        cell.img.image = UIImage(data: imageData)
-                    }
+            cell.configure(categories, indexPath.row)
             return cell
         }else{
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! FeaturedCollectionViewCell
-            cell2.itemDescription.text = featuredProducts[indexPath.row].description
-            let url = URL(string: featuredProducts[indexPath.row].image)
-                    let data = try? Data(contentsOf: url!)
-
-                    if let imageData = data {
-                        cell2.img.image = UIImage(data: imageData)
-                    }
-            
+            cell2.configure(featuredProducts, indexPath.row)
             return cell2
         }
     }

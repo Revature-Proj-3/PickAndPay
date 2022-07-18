@@ -68,18 +68,12 @@ class HomePageViewModel{
             case is Swift.DecodingError:
                 return .decodingFailed
             case let urlError as URLError:
-                return .sessionFailed//(error: urlError)
+                return .sessionFailed
             default:
                 return .other(error)
                 }
-            //.catch({ error in
-             //   Just([])
             })
-                .eraseToAnyPublisher()
-
-       // return publisher
-
+            .eraseToAnyPublisher()
     }
-    
 }
 
