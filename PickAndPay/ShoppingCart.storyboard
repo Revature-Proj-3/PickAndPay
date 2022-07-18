@@ -35,18 +35,6 @@
                                     <action selector="signIn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9Cf-Zz-aOk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y16-Ie-pEk">
-                                <rect key="frame" x="16" y="635" width="378" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Sign up now">
-                                    <color key="baseForegroundColor" name="ViewBackground"/>
-                                    <color key="baseBackgroundColor" name="FilledButton"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="signUp:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="10M-JJ-WLl"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select your location to see product availability" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgv-zb-7Cd">
                                 <rect key="frame" x="33" y="120" width="359" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -125,6 +113,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y16-Ie-pEk">
+                                <rect key="frame" x="12" y="635" width="378" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sign up now">
+                                    <color key="baseForegroundColor" name="ViewBackground"/>
+                                    <color key="baseBackgroundColor" name="FilledButton"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signUp:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="10M-JJ-WLl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Background"/>
