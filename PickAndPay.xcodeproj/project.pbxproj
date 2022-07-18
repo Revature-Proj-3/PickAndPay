@@ -163,7 +163,6 @@
 		841E958E286F386F0084B202 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				841E9593286F3A750084B202 /* Constants.swift */,
 				84AD8D032885EB430071AAE6 /* View */,
 				84AD8D042885EB4A0071AAE6 /* Model */,
 				84AD8D052885EB510071AAE6 /* ViewModel */,
@@ -245,6 +244,7 @@
 				84C14AD7286B94F6006BE029 /* SceneDelegate.swift */,
 				84C14AD9286B94F6006BE029 /* ViewController.swift */,
 				73B3640028772DE700C84882 /* DBHelper.swift */,
+				841E9593286F3A750084B202 /* Constants.swift */,
 				84C14ADB286B94F6006BE029 /* Main.storyboard */,
 				739505D5286CFF3500FC7CA5 /* ShoppingCart.storyboard */,
 				70DEE1C42875F6CF0045FC1E /* Order.storyboard */,
