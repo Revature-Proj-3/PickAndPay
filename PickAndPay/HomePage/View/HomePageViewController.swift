@@ -8,12 +8,10 @@
 import UIKit
 import Combine
 
-class HomePageViewController: UIViewController, UISearchBarDelegate {
+class HomePageViewController: UIViewController {
 
     let viewModel = HomePageViewModel.HomePageViewModelHelper
-
     let userDefault = UserDefaults.standard
-    
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var catCollectionView: UICollectionView!
@@ -29,41 +27,53 @@ class HomePageViewController: UIViewController, UISearchBarDelegate {
     private var products : [Product] = []
     private var categories : [Product] = []
     private var featuredProducts : [Product] = []
-    let searchBarDelegate = SearchBarDelegateFile()
+    let searchBarDelegate = SearchBarDelegateFile.searchHelper
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = searchBarDelegate
+        searchBar.delegate = self
         loadingIndicator.startAnimating()
         loadingIndicator2.startAnimating()
-        
+
         observer = viewModel.getProducts()
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] products in
-                if(products.isEmpty){
-                    print("products is empty")
-                    self?.loadingIndicator.stopAnimating()
-                    self?.loadingIndicator2.stopAnimating()
-                    self?.catCollectionView.isHidden = true
-                    self?.featuredCollectionView.isHidden = true
-                    self?.errorLabel.isHidden = false
-                    return
+            .sink(receiveCompletion: { completion in
+                if case let .failure(error) = completion {
+                    switch error {
+                    case .sessionFailed:
+                        //handle URL error
+                        self.errorLabel.text = "Please check your network"
+                        fallthrough
+                    case .decodingFailed:
+                        //handle decoding error
+                        self.loadingIndicator.stopAnimating()
+                        self.loadingIndicator2.stopAnimating()
+                        self.catCollectionView.isHidden = true
+                        self.featuredCollectionView.isHidden = true
+                        self.errorLabel.isHidden = false
+                        return
+                    default:
+                        //handle "other" error
+                        print(error)
+                    }
                 }
+            },receiveValue: { [weak self] products in
             self?.featuredProducts = (self?.viewModel.getFeaturedProducts(products)) ?? []
             self?.categories = (self?.viewModel.filterCategories(products)) ?? []
+            self?.products = (self?.viewModel.productList) ?? []
             self?.featuredCollectionView.reloadData()
             self?.catCollectionView.reloadData()
             self?.loadingIndicator.stopAnimating()
             self?.loadingIndicator2.stopAnimating()
         })
-        
-        print(userDefault.string(forKey: "currentLoggedIn")!)
     }
+    
+    //MARK: - viewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         let currentUser = userDefault.string(forKey: "currentLoggedIn")
-        if currentUser != "guest" {
+        if currentUser != "guest@guest.com" {
             welcomeText.isHidden = false
             signInLabel.text = currentUser
             signInButton.isHidden = true
@@ -97,25 +107,31 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == catCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as!      HomePageCategoryCollectionViewCell
-            cell.label.text = categories[indexPath.row].category
-            let url = URL(string: categories[indexPath.row].image)
-                    let data = try? Data(contentsOf: url!)
-
-                    if let imageData = data {
-                        cell.img.image = UIImage(data: imageData)
-                    }
+            cell.configure(categories, indexPath.row)
             return cell
         }else{
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! FeaturedCollectionViewCell
-            cell2.itemDescription.text = featuredProducts[indexPath.row].description
-            let url = URL(string: featuredProducts[indexPath.row].image)
-                    let data = try? Data(contentsOf: url!)
-
-                    if let imageData = data {
-                        cell2.img.image = UIImage(data: imageData)
-                    }
-            
+            cell2.configure(featuredProducts, indexPath.row)
             return cell2
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == featuredCollectionView {
+            let storyBoard = UIStoryboard(name: "Order", bundle: nil)
+            let pricedVC = storyBoard.instantiateViewController(withIdentifier: "PricedOrder") as! PricedViewController
+            pricedVC.price = String(featuredProducts[indexPath.row].price)
+            pricedVC.descript = featuredProducts[indexPath.row].description
+            pricedVC.productImg = featuredProducts[indexPath.row].image
+            pricedVC.productTitle = featuredProducts[indexPath.row].title
+            pricedVC.productCategory = featuredProducts[indexPath.row].category
+            
+            show(pricedVC, sender: Any?.self)
+        }else{
+            let storyBoard = UIStoryboard(name: "Order", bundle: nil)
+            let selectedVC = storyBoard.instantiateViewController(withIdentifier: "SelectedOrder") as! SelectedViewController
+            selectedVC.topic = categories[indexPath.row].category
+
+            show(selectedVC, sender: Any?.self)
         }
     }
 
@@ -143,4 +159,19 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
+// MARK: - UISearchBarDelegate
+extension HomePageViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if(searchBar.text != ""){
+            let result = searchBarDelegate.findSearchItems(products, searchBar.text!)
+            
+            let storyBoard = UIStoryboard(name: "HomePage", bundle: nil)
+            let selectedVC = storyBoard.instantiateViewController(withIdentifier: "searchPageController") as! SearchPageViewController
+            
+            selectedVC.products = result
+            show(selectedVC, sender: Any?.self)
+        }
+    }
+    
+}
