@@ -96,7 +96,15 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
+        let storyBoard = UIStoryboard(name: "Order", bundle: nil)
+        let pricedVC = storyBoard.instantiateViewController(withIdentifier: "PricedOrder") as! PricedViewController
+        pricedVC.price = String(cartItems[indexPath.row].price)
+        pricedVC.descript = cartItems[indexPath.row].description
+        pricedVC.productImg = cartItems[indexPath.row].image!
+        pricedVC.productTitle = cartItems[indexPath.row].title!
+        pricedVC.productCategory = cartItems[indexPath.row].category!
+
+        show(pricedVC, sender: Any?.self)
     }
 }
 

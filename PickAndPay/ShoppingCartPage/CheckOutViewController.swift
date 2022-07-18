@@ -25,7 +25,7 @@ class CheckOutViewController: UIViewController {
         for i in 0..<checkOutItems.count{
             total = total + checkOutItems[i].price
         }
-        TotalPrice.text = "Total: \(total)"
+        TotalPrice.text = "Total: $\(total)"
     }
     
     @IBAction func ItemCheckOutButton(_ sender: Any) {
@@ -34,11 +34,12 @@ class CheckOutViewController: UIViewController {
             for i in 0..<checkOutItems.count{
                 checkOutHelper.deleteShoppingCartItem(checkOutItems[i].title ?? "")
             }
+            checkOutItems = checkOutHelper.getAllShoppingCartItem()
+            checkOutTableView.reloadData()
+            TotalPrice.text = "Total: $0.00"
         }else{
             checkOutItems = checkOutHelper.getAllShoppingCartItem()
         }
-        
-        
     }
     
 }
