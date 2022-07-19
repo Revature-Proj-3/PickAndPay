@@ -66,10 +66,10 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if(wishListItems.isEmpty){
-            wishListTableView.isHidden = true
-        }else{
+        if(!wishListItems.isEmpty){
             wishListTableView.isHidden = false
+        }else{
+            wishListTableView.isHidden = true
             
         }
     }

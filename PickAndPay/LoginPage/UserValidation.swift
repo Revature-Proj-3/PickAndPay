@@ -171,8 +171,7 @@ class UserValidation: ObservableObject {
     func signIn() -> Bool {
         if let user = DBHelper.dbHelper.getUserData(email) {
             if user.password == password {
-                let name = user.name
-            userDefault.set(name, forKey: "currentLoggedIn")
+            userDefault.set(email, forKey: "currentLoggedIn")
             return true
             } else {
                 return false
