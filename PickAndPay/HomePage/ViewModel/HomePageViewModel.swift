@@ -33,7 +33,7 @@ class HomePageViewModel{
     }
     
     func getFeaturedProducts(_ arr : [Product]) -> [Product] {
-        
+        productList = arr
         while featuredProducts.count < 6 {
             let randomProduct = arr.randomElement()
             var contains = false
@@ -53,18 +53,27 @@ class HomePageViewModel{
         return featuredProducts
     }
     
-    func getProducts() -> AnyPublisher<[Product], Never>{
-        let publisher = URLSession.shared.dataTaskPublisher(for: URL(string: constants.apiURL)!)
-            .map({$0.data})
-            .decode(type: [Product].self, decoder: JSONDecoder())
-            .catch({ _ in
-                Just([])
-            })
-                .eraseToAnyPublisher()
-
-        return publisher
-
+    enum FailureReason : Error {
+        case sessionFailed//(error: URLError)
+        case decodingFailed
+        case other(Error)
     }
     
+    func getProducts() -> AnyPublisher<[Product], FailureReason>{
+        return URLSession.shared.dataTaskPublisher(for: URL(string: constants.apiURL)!)
+            .map({$0.data})
+            .decode(type: [Product].self, decoder: JSONDecoder())
+            .mapError({ error in
+                switch error {
+            case is Swift.DecodingError:
+                return .decodingFailed
+            case let urlError as URLError:
+                return .sessionFailed
+            default:
+                return .other(error)
+                }
+            })
+            .eraseToAnyPublisher()
+    }
 }
 

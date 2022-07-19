@@ -34,9 +34,9 @@ class DBHelper {
         }
     }
     
-    func getUserData(_ email : String) -> User{
+    func getUserData(_ email : String) -> User?{
         setUser()
-        var user = User()
+        var user : User?
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         fetchRequest.predicate = NSPredicate(format: "email == %@", email)
         fetchRequest.fetchLimit = 1

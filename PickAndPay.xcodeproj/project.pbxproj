@@ -47,6 +47,8 @@
 		84C14AF0286B94F7006BE029 /* PickAndPayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AEF286B94F7006BE029 /* PickAndPayTests.swift */; };
 		84C14AFA286B94F7006BE029 /* PickAndPayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AF9286B94F7006BE029 /* PickAndPayUITests.swift */; };
 		84C14AFC286B94F7006BE029 /* PickAndPayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C14AFB286B94F7006BE029 /* PickAndPayUITestsLaunchTests.swift */; };
+		84FC2AD4287F272700259151 /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC2AD3287F272700259151 /* SearchPageViewController.swift */; };
+		84FC2AD6287F273D00259151 /* SearchPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC2AD5287F273D00259151 /* SearchPageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		84C14AF5286B94F7006BE029 /* PickAndPayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickAndPayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14AF9286B94F7006BE029 /* PickAndPayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAndPayUITests.swift; sourceTree = "<group>"; };
 		84C14AFB286B94F7006BE029 /* PickAndPayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAndPayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		84FC2AD3287F272700259151 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
+		84FC2AD5287F273D00259151 /* SearchPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,13 +169,9 @@
 		841E958E286F386F0084B202 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				841E958C286F28C20084B202 /* FeaturedCollectionViewCell.swift */,
-				841E9588286E0C010084B202 /* HomePageViewController.swift */,
-				841E958A286E26720084B202 /* HomePageCategoryCollectionViewCell.swift */,
-				841E9586286E016B0084B202 /* HomePage.storyboard */,
-				841E958F286F388C0084B202 /* HomePageModel.swift */,
-				841E9591286F38980084B202 /* HomePageViewModel.swift */,
-				841E95CB287883290084B202 /* SearchBarDelegateFile.swift */,
+				84AD8D032885EB430071AAE6 /* View */,
+				84AD8D042885EB4A0071AAE6 /* Model */,
+				84AD8D052885EB510071AAE6 /* ViewModel */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -189,6 +189,36 @@
 				842DF1CD2875EF0C0096FAE2 /* SwiftUILoginView.swift */,
 			);
 			path = LoginPage;
+			sourceTree = "<group>";
+		};
+		84AD8D032885EB430071AAE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				841E958C286F28C20084B202 /* FeaturedCollectionViewCell.swift */,
+				84FC2AD5287F273D00259151 /* SearchPageCollectionViewCell.swift */,
+				84FC2AD3287F272700259151 /* SearchPageViewController.swift */,
+				841E958A286E26720084B202 /* HomePageCategoryCollectionViewCell.swift */,
+				841E9588286E0C010084B202 /* HomePageViewController.swift */,
+				841E9586286E016B0084B202 /* HomePage.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84AD8D042885EB4A0071AAE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				841E958F286F388C0084B202 /* HomePageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84AD8D052885EB510071AAE6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				841E95CB287883290084B202 /* SearchBarDelegateFile.swift */,
+				841E9591286F38980084B202 /* HomePageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		84C14AC9286B94F6006BE029 = {
@@ -220,6 +250,7 @@
 				84C14AD7286B94F6006BE029 /* SceneDelegate.swift */,
 				84C14AD9286B94F6006BE029 /* ViewController.swift */,
 				73B3640028772DE700C84882 /* DBHelper.swift */,
+				841E9593286F3A750084B202 /* Constants.swift */,
 				84C14ADB286B94F6006BE029 /* Main.storyboard */,
 				739505D5286CFF3500FC7CA5 /* ShoppingCart.storyboard */,
 				70DEE1C42875F6CF0045FC1E /* Order.storyboard */,
@@ -228,7 +259,6 @@
 				84C14AE6286B94F7006BE029 /* Info.plist */,
 				84C14ADE286B94F6006BE029 /* PickAndPay.xcdatamodeld */,
 				841E9584286DFEBD0084B202 /* TabController.storyboard */,
-				841E9593286F3A750084B202 /* Constants.swift */,
 				842DF1DE2875F1B20096FAE2 /* LoginPage */,
 				841E958E286F386F0084B202 /* HomePage */,
 			);
@@ -395,6 +425,7 @@
 				841E9592286F38980084B202 /* HomePageViewModel.swift in Sources */,
 				842DF1E228775AF10096FAE2 /* LoginSwiftUIViewController.swift in Sources */,
 				842DF1D42875F01A0096FAE2 /* LoginViewController.swift in Sources */,
+				84FC2AD6287F273D00259151 /* SearchPageCollectionViewCell.swift in Sources */,
 				841E958B286E26720084B202 /* HomePageCategoryCollectionViewCell.swift in Sources */,
 				70DEE1C12875F5AE0045FC1E /* SelectedViewController.swift in Sources */,
 				842DF1D02875EF4D0096FAE2 /* SwiftUICreateAccountView.swift in Sources */,
@@ -403,6 +434,7 @@
 				70DEE1BD2875F5A20045FC1E /* OrderViewController.swift in Sources */,
 				73DECAC0286F521600D8259A /* ShoppingCartTableViewCell.swift in Sources */,
 				73B3640128772DE700C84882 /* DBHelper.swift in Sources */,
+				84FC2AD4287F272700259151 /* SearchPageViewController.swift in Sources */,
 				841E9589286E0C010084B202 /* HomePageViewController.swift in Sources */,
 				73EA8ED7288587D4009BB261 /* CheckOutTableViewCell.swift in Sources */,
 				842DF1E428775D440096FAE2 /* CreateAccountSwiftUIViewController.swift in Sources */,
@@ -601,6 +633,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = TabController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -629,6 +662,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = TabController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
