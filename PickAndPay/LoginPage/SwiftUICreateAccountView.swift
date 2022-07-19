@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SwiftUICreateAccountView: View {
     
-    
-
     @StateObject private var viewModel = UserValidation()
+    
+    @State var signUpSuccess = false
+    @State var isHidden = true
     
     var body: some View {
         ZStack {
@@ -30,7 +31,9 @@ struct SwiftUICreateAccountView: View {
                 EntryField(sfSymbolName: "lock.shield", placeholder: "Re-Enter Password", prompt: viewModel.confirmPasswordPrompt, field: $viewModel.reEnterPassword, isSecure: true)
             }
 
-                Button("Create your Pick and Pay account"){viewModel.signUp()}
+                Button("Create your Pick and Pay account"){signUpSuccess = viewModel.signUp()
+                    isHidden = false
+                }
                 //Text("Create your Pick and Pay account")
                     .foregroundColor(.white)
                     .font(.system(size: 18, weight: .medium))
@@ -43,6 +46,11 @@ struct SwiftUICreateAccountView: View {
                 .padding(.horizontal, 20)
                 .opacity(viewModel.canSubmit ? 1 : 0.6)
                 .disabled(!viewModel.canSubmit)
+                
+                if !isHidden {
+                    Text(signUpSuccess ? "Created Account Successfully!" : "Failed to Create Account").foregroundColor(signUpSuccess ? .green : .red)
+                }
+                
             }.frame(width: 375, height: 550).border(.gray.opacity(0.5))
                 .background(Color.white)
             Spacer()

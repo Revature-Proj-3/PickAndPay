@@ -9,6 +9,9 @@ import Foundation
 import Combine
 
 class UserValidation: ObservableObject {
+    
+    let userDefault = UserDefaults.standard
+    
     @Published var name = ""
     @Published var email = ""
     @Published var mobile = ""
@@ -111,7 +114,7 @@ class UserValidation: ObservableObject {
         return validInput
     }
     
-    func didRegisterAccountNewUser(email: String) -> User {
+    func didRegisterAccountNewUser(email: String) -> User? {
         let newUser = DBHelper.dbHelper.getUserData(email)
         return newUser
     }
@@ -139,12 +142,8 @@ class UserValidation: ObservableObject {
                 return validation
             }
     
-    func testButton() {
-        print("Success")
-    }
-    
     func signUp() -> Bool {
-        print("Success")
+
         let name = name
         let email = email
         let mobile = mobile
@@ -169,6 +168,18 @@ class UserValidation: ObservableObject {
         }
     }
     
+    func signIn() -> Bool {
+        if let user = DBHelper.dbHelper.getUserData(email) {
+            if user.password == password {
+                let name = user.name
+            userDefault.set(name, forKey: "currentLoggedIn")
+            return true
+            } else {
+                return false
+            }
+        }
+        return false
+    }
 }
 
 

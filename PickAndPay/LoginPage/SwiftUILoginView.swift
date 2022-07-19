@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct SwiftUILoginView: View {
+    
+    @StateObject private var viewModel = UserValidation()
+    
     @State var emailOrMobile = ""
-    @State var password = ""
+    @State var signInSuccess = false
+    @State var isHidden = true
+    //@State var password = ""
+    
     var body: some View {
         ZStack {
             Color(UIColor(named: "Background")!).ignoresSafeArea()
@@ -20,39 +26,29 @@ struct SwiftUILoginView: View {
                 Text("Login").font(.system(size: 32, weight: .medium)).frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
             
-            HStack {
-                Image(systemName: "envelope").foregroundColor(.black)
-                TextField("Email or mobile phone number", text: $emailOrMobile)
+            VStack {
+                EntryField(sfSymbolName: "envelope", placeholder: "Email", prompt: viewModel.emailPrompt, field: $viewModel.email)
+                EntryField(sfSymbolName: "lock", placeholder: "Password", prompt: viewModel.passwordPrompt, field: $viewModel.password, isSecure: true)
             }
-                .padding(.all, 10)
-                .background(Color.gray.opacity(0.5))
-                .cornerRadius(4)
-                .border(Color.black, width: 1)
-                .cornerRadius(2)
-                .padding(.horizontal, 20)
             
-            HStack {
-                Image(systemName: "lock").foregroundColor(.black)
-                SecureField("Password", text: $password)
-            }
-                .padding(.all, 10)
-                .background(Color.gray.opacity(0.5))
-                .cornerRadius(4)
-                .border(Color.black, width: 1)
-                .cornerRadius(2)
-                .padding(.horizontal, 20)
-            
-            Button(action: {}) {
-                Text("Login")
+                Button("Login"){signInSuccess = viewModel.signIn()
+                 isHidden = false
+                }
+                //Text("Login")
                     .foregroundColor(.white)
                     .font(.system(size: 18, weight: .medium))
-            }.frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity)
                 .padding(.vertical, 10)
                 .background(Color(UIColor(named: "FilledButton")!))
                 .cornerRadius(4)
                 .border(Color.black, width: 1)
                 .cornerRadius(2)
                 .padding(.horizontal, 20)
+                
+                if !isHidden {
+                    Text(signInSuccess ? "Signed in Successfully!" : "Sign in Failed").foregroundColor(signInSuccess ? .green : .red)
+                }
+                
             }.frame(width: 375, height: 410).border(.gray.opacity(0.5))
                 .background(Color.white)
             Spacer()
