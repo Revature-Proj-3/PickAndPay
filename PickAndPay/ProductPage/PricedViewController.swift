@@ -24,7 +24,7 @@ class PricedViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         descriptionLabel.sizeToFit()
-        scroll.contentSize = CGSize(width: self.descriptionLabel.frame.width, height: self.descriptionLabel.frame.height + 15)
+        scroll.contentSize = CGSize(width: self.descriptionLabel.frame.width, height: self.descriptionLabel.frame.height + 5)
         
         print("This is the db Healer", dbHelper.getAllShoppingCartItem())
         print("this is userData", dbHelper.getUserData("guest@guest.com"))
@@ -36,6 +36,7 @@ class PricedViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var priceTitle: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var stepperLabel: UILabel!
     
     var descript = ""
     var price =  ""
@@ -43,25 +44,41 @@ class PricedViewController: UIViewController {
     var productTitle = ""
     var productCategory = ""
     var productRate = 0
-    var productCount = 0
+   
     
+    @IBAction func stepper(_ sender: UIStepper) {
+        let numberFomatter = NumberFormatter()
+        let formatNumber = numberFomatter.string(for: sender.value)
+        stepperLabel.text = formatNumber
+    }
     
     @IBAction func addToCart(_ sender: Any) {
         
         var newPrice = Double(price)
+        var productCount = Int32(stepperLabel.text!)!
         
-        dbHelper.addShoppingCartItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), Int32(productCount))
+        dbHelper.addShoppingCartItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), productCount)
         
-        print(productTitle)
-        print(descript)
-        print(productImg)
-        print(newPrice!)
+        let dialogMessage = UIAlertController(title: "Item Added", message: " Item added to Cart", preferredStyle: .alert)
+
+            // Create Confirm button with action handler
+            let confirm = UIAlertAction(title: "Confirm", style: .default, handler: { (action) -> Void in
+            print("Confirm button tapped")
+
+            })
+
+            // Add Confrim and Cancel button to dialog message
+            dialogMessage.addAction(confirm)
+
+            // Present dialog message to user
+            self.present(dialogMessage, animated: true, completion: nil)
     }
     
     
     @IBAction func wishListBtn(_ sender: Any) {
         
         var newPrice = Double(price)
+        var productCount = Int32(stepperLabel.text!)!
         
         let dialogMessage = UIAlertController(title: "Item Added", message: "Would you like to add your Item to WishList", preferredStyle: .alert)
 
@@ -77,7 +94,7 @@ class PricedViewController: UIViewController {
             // Present dialog message to user
             self.present(dialogMessage, animated: true, completion: nil)
         
-        dbHelper.addWishListItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), Int32(productCount))
+        dbHelper.addWishListItem(productTitle, descript, productImg, productCategory, newPrice!, Int32(productRate), productCount)
     }
     
     

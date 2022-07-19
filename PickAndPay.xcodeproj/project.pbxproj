@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		706AB49E28873C3A001B0596 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AB49D28873C3A001B0596 /* LoginTableViewCell.swift */; };
 		70DEE1BB2875F5940045FC1E /* OrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DEE1BA2875F5940045FC1E /* OrderCollectionViewCell.swift */; };
 		70DEE1BD2875F5A20045FC1E /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DEE1BC2875F5A20045FC1E /* OrderViewController.swift */; };
 		70DEE1BF2875F5A80045FC1E /* PricedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DEE1BE2875F5A80045FC1E /* PricedViewController.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		706AB49D28873C3A001B0596 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
 		70DEE1BA2875F5940045FC1E /* OrderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCollectionViewCell.swift; sourceTree = "<group>"; };
 		70DEE1BC2875F5A20045FC1E /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		70DEE1BE2875F5A80045FC1E /* PricedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricedViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				842DF1E328775D440096FAE2 /* CreateAccountSwiftUIViewController.swift */,
 				842DF1E128775AF10096FAE2 /* LoginSwiftUIViewController.swift */,
 				842DF1D32875F01A0096FAE2 /* LoginViewController.swift */,
+				706AB49D28873C3A001B0596 /* LoginTableViewCell.swift */,
 				842DF1DF287741290096FAE2 /* UserValidation.swift */,
 				842DF22D287F79330096FAE2 /* EntryField.swift */,
 				842DF1CF2875EF4D0096FAE2 /* SwiftUICreateAccountView.swift */,
@@ -449,6 +452,7 @@
 				73DECABE286F514300D8259A /* ShoppingCartViewController.swift in Sources */,
 				842DF22E287F79340096FAE2 /* EntryField.swift in Sources */,
 				70DEE1BF2875F5A80045FC1E /* PricedViewController.swift in Sources */,
+				706AB49E28873C3A001B0596 /* LoginTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
