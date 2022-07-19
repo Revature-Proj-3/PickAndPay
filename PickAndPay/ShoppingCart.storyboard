@@ -140,6 +140,8 @@
                         <outlet property="checkOut" destination="eBu-km-XEg" id="vYF-PC-gzC"/>
                         <outlet property="shoppingCartImage" destination="YKx-ed-mh4" id="wGm-s5-P6W"/>
                         <outlet property="shoppingCartTableView" destination="aVa-SP-o5N" id="Oo9-uj-8OH"/>
+                        <outlet property="signIn" destination="ItF-d9-7OA" id="bNX-y9-RYO"/>
+                        <outlet property="signUp" destination="y16-Ie-pEk" id="g66-m6-aXm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

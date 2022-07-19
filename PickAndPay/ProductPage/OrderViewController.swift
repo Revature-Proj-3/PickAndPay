@@ -32,17 +32,17 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
         collectionViewB.delegate = self
         
         
-        observer = viewModel.getProducts()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self] products in
-                if(products.isEmpty){
-                    self?.collectionViewB.isHidden = true
-                    self?.productErrorLabel.isHidden = false
-                    return
-                }
-                self?.categories = self?.viewModel.self.catList ?? []
-                self?.collectionViewB.reloadData()
-            })
+//        observer = viewModel.getProducts()
+//            .receive(on: DispatchQueue.main)
+//            .sink(receiveValue: {[weak self] products in
+//                if(products.isEmpty){
+//                    self?.collectionViewB.isHidden = true
+//                    self?.productErrorLabel.isHidden = false
+//                    return
+//                }
+                self.categories = self.viewModel.self.catList
+                self.collectionViewB.reloadData()
+         //   })
         
         
 

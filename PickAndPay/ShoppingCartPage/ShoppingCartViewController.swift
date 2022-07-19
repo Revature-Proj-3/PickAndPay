@@ -12,8 +12,11 @@ class ShoppingCartViewController: UIViewController {
     @IBOutlet weak var shoppingCartTableView: UITableView!
     @IBOutlet weak var shoppingCartImage: UIImageView!
     @IBOutlet weak var cartEmptyText: UILabel!
+    @IBOutlet weak var signIn: UIButton!
+    @IBOutlet weak var signUp: UIButton!
     var cartItems : [ShoppingCartItem] = []
     var cartHelper = DBHelper.dbHelper
+    let userDefault = UserDefaults.standard
     @IBOutlet weak var checkOut: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +27,8 @@ class ShoppingCartViewController: UIViewController {
 
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("appear")
         cartItems = cartHelper.getAllShoppingCartItem()
+        let currentUser = userDefault.string(forKey: "currentLoggedIn")
         if(cartItems.isEmpty){
             shoppingCartTableView.isHidden = true
             checkOut.isHidden = true
@@ -35,8 +38,17 @@ class ShoppingCartViewController: UIViewController {
             shoppingCartTableView.isHidden = false
             shoppingCartImage.isHidden = true
             cartEmptyText.isHidden = true
-            checkOut.isHidden = false
+            if currentUser != "guest@guest.com" {
+                checkOut.isHidden = false
+            }else{
+                checkOut.isHidden = true
+            }
         }
+        if currentUser != "guest@guest.com"{
+            signIn.isHidden = true
+            signUp.isHidden = true
+        }
+        
         self.shoppingCartTableView.reloadData()
     }
     
@@ -95,17 +107,17 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
             print("error deleting item")
         }
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Order", bundle: nil)
         let pricedVC = storyBoard.instantiateViewController(withIdentifier: "PricedOrder") as! PricedViewController
         pricedVC.price = String(cartItems[indexPath.row].price)
-        pricedVC.descript = cartItems[indexPath.row].description
+        pricedVC.descript = cartItems[indexPath.row].productDescription!
         pricedVC.productImg = cartItems[indexPath.row].image!
         pricedVC.productTitle = cartItems[indexPath.row].title!
         pricedVC.productCategory = cartItems[indexPath.row].category!
-
         show(pricedVC, sender: Any?.self)
     }
+    
 }
 
 

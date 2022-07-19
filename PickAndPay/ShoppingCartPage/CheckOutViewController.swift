@@ -30,19 +30,17 @@ class CheckOutViewController: UIViewController {
     
     @IBAction func ItemCheckOutButton(_ sender: Any) {
         checkOutItems = checkOutHelper.getAllShoppingCartItem()
-        if !checkOutItems.isEmpty{
-            for i in 0..<checkOutItems.count{
-                checkOutHelper.deleteShoppingCartItem(checkOutItems[i].title ?? "")
-            }
-            checkOutItems = checkOutHelper.getAllShoppingCartItem()
-            checkOutTableView.reloadData()
-            TotalPrice.text = "Total: $0.00"
-        }else{
+        while !checkOutItems.isEmpty{
+            checkOutHelper.deleteShoppingCartItem(checkOutItems[0].title ?? "")
+            checkOutItems.remove(at: 0)
             checkOutItems = checkOutHelper.getAllShoppingCartItem()
         }
+        checkOutTableView.reloadData()
+        TotalPrice.text = "Total: $0.00"
     }
     
 }
+//MARK: - TableView
 extension CheckOutViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return checkOutItems.count
