@@ -66,12 +66,16 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        wishListItems = cartHelper.getWishListItem()
+        wishListTableView.reloadData()
         if(!wishListItems.isEmpty){
             wishListTableView.isHidden = false
         }else{
             wishListTableView.isHidden = true
             
         }
+        
     }
     
     
