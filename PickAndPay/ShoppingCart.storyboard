@@ -17,12 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for products..." translatesAutoresizingMaskIntoConstraints="NO" id="m7N-Hq-PiC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" name="Background"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItF-d9-7OA">
                                 <rect key="frame" x="18" y="589" width="378" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -146,6 +140,12 @@
                                     <action selector="signUp:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="10M-JJ-WLl"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for products..." translatesAutoresizingMaskIntoConstraints="NO" id="m7N-Hq-PiC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" name="Background"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Background"/>
@@ -159,6 +159,7 @@
                     <connections>
                         <outlet property="cartEmptyText" destination="9uA-j2-2P8" id="djp-4k-W7x"/>
                         <outlet property="checkOut" destination="eBu-km-XEg" id="vYF-PC-gzC"/>
+                        <outlet property="searchBar" destination="m7N-Hq-PiC" id="wHY-kw-1Lt"/>
                         <outlet property="shoppingCartImage" destination="YKx-ed-mh4" id="wGm-s5-P6W"/>
                         <outlet property="shoppingCartTableView" destination="aVa-SP-o5N" id="Oo9-uj-8OH"/>
                         <outlet property="signIn" destination="ItF-d9-7OA" id="bNX-y9-RYO"/>

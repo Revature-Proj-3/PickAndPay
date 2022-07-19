@@ -9,19 +9,26 @@ import UIKit
 import SwiftUI
 
 class ShoppingCartViewController: UIViewController {
+    
     @IBOutlet weak var shoppingCartTableView: UITableView!
     @IBOutlet weak var shoppingCartImage: UIImageView!
     @IBOutlet weak var cartEmptyText: UILabel!
+    @IBOutlet weak var searchBar:UISearchBar!
     @IBOutlet weak var signIn: UIButton!
     @IBOutlet weak var signUp: UIButton!
     var cartItems : [ShoppingCartItem] = []
     var cartHelper = DBHelper.dbHelper
     let userDefault = UserDefaults.standard
     @IBOutlet weak var checkOut: UIButton!
+    let searchBarDelegate = SearchBarDelegateFile.searchHelper
+    let viewModel = HomePageViewModel.HomePageViewModelHelper
+    var products : [Product] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         shoppingCartTableView.delegate = self
+        searchBar.delegate = self
         shoppingCartTableView.dataSource = self
+        products = viewModel.productList
         cartItems = cartHelper.getAllShoppingCartItem()
         
 
@@ -116,6 +123,22 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
         pricedVC.productTitle = cartItems[indexPath.row].title!
         pricedVC.productCategory = cartItems[indexPath.row].category!
         show(pricedVC, sender: Any?.self)
+    }
+    
+}
+//MARK: - searchBarDelegate
+extension ShoppingCartViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if(searchBar.text != ""){
+            let result = searchBarDelegate.findSearchItems(products, searchBar.text!)
+            
+            let storyBoard = UIStoryboard(name: "HomePage", bundle: nil)
+            let selectedVC = storyBoard.instantiateViewController(withIdentifier: "searchPageController") as! SearchPageViewController
+            
+            selectedVC.products = result
+            show(selectedVC, sender: Any?.self)
+        }
     }
     
 }
