@@ -62,7 +62,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         wishListTableView.delegate = self
         wishListTableView.dataSource = self
         wishListItems = cartHelper.getWishListItem()
-        
+        //
     }
     
     override func viewWillAppear(_ animated: Bool) {
